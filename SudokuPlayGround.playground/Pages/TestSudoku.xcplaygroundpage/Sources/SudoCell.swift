@@ -3,12 +3,22 @@ import Foundation
 typealias SudoBits = UInt16
 let SudoAllValues : SudoBits = 0b111111111
 
-public struct SudoCell {
+public struct SudoCell: CustomStringConvertible {
     
     var pValues: SudoBits = SudoAllValues
     let gridRef: String
     //var isLocked: Bool = false
     
+    
+    public var description: String {
+        let possVal = possibleValues()
+        var outStr = ""
+        for val in possVal {
+            outStr += "\(val)"
+        }
+//        return "\(gridRef) - " + outStr
+        return outStr
+    }
     
     func bitsAsString (bits : SudoBits ) -> String {
         
@@ -28,7 +38,7 @@ public struct SudoCell {
     }
     
     func intToBits (number: Int) -> SudoBits {
-        assert(number >= 1 && number <= 9, "Must be between 1 and 9")
+        assert((1...9).contains(number), "Must be between 1 and 9")
         return  SudoBits(1 << (number - 1))
     }
     

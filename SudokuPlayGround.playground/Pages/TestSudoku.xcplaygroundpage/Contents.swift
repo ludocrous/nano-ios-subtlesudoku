@@ -32,7 +32,7 @@ myCell.possibleValues()
 //myCell.bitsAsString(myCell.pValues)
 //myCell.bitsAsString(myCell.intToBits(8))
 
-let refs = createRefs(Array(rows.characters), cols: Array(cols.characters))
+let refs = createRefs(rows: Array(rows.characters), cols: Array(cols.characters))
 refs.count
 
 "Hello".dynamicType
@@ -40,4 +40,19 @@ refs.count
 let str: String = "Hello"
 let chars = Array(str.characters)
 chars.dynamicType
+buildRelationships()
+print (cells)
+//print (units)
+//print (membership)
+//print (peers["C2"])
+var testSet = Set<String>()
+testSet.insert("A1")
+testSet.insert("A2")
+let newSet: Set<String> = ["C1","D5","A1"]
+testSet = testSet.union(newSet)
+
+let strArray : [String] = Array(testSet)
+let grid1 = "003020600900305001001806400008102900700000008006708200002609500800203009005010300"
+var newGrid = SudoGrid(gridString: grid1)
+print(newGrid)
 
