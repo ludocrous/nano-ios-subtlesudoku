@@ -6,12 +6,14 @@ let SudoAllValues : SudoBits = 0b111111111
 public struct SudoCell: CustomStringConvertible {
     
     var pValues: SudoBits = SudoAllValues
+//    var initialValue: Int = 0
     let gridRef: String
-    //var isLocked: Bool = false
+//    var isLocked: Bool = false
+    
     
     
     public var description: String {
-        let possVal = possibleValues()
+        let possVal = possibleValues
         var outStr = ""
         for val in possVal {
             outStr += "\(val)"
@@ -19,6 +21,34 @@ public struct SudoCell: CustomStringConvertible {
 //        return "\(gridRef) - " + outStr
         return outStr
     }
+    
+    public var gridStringValue: String {
+        let possVals = possibleValues
+        if possVals.count == 1 {
+            return String(possVals[0])
+        } else if possVals.count > 1 {
+            return "."
+        } else {
+            print ("Problem exists - should be at least one possible value not \(possVals.count)")
+            return "X"
+        }
+    }
+    
+    public var possiblesCount : Int {
+        return countBitsSet(pValues)
+    }
+    
+    public var possibleValues: [Int] {
+        var result = [Int]()
+        for i in 1...9 {
+            if isPossibleValue(i) {
+                result.append(i)
+            }
+        }
+        return result
+    }
+    
+
     
     func bitsAsString (bits : SudoBits ) -> String {
         
@@ -50,20 +80,8 @@ public struct SudoCell: CustomStringConvertible {
         return pValues & intToBits(value) != 0
     }
     
-    public func possibleValues () -> [Int] {
-        var result = [Int]()
-        for i in 1...9 {
-            if isPossibleValue(i) {
-                result.append(i)
-            }
-        }
-        return result
-    }
-    
-    public mutating func setToSpecificValue(value: Int, startingValue: Bool = false) {
-        if startingValue {
-      //      initialValue = value
-        }
+   
+    public mutating func setToSpecificValue(value: Int) {
         pValues = intToBits(value)
     }
     
