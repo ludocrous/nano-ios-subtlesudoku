@@ -9,8 +9,9 @@
 import Foundation
 import AWSDynamoDB
 
-class SudokuChallenge :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
+class DyDBChallenge :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
     var ChallengeId: NSNumber?
+    var Rating: String?
     var ProblemString: String?
     var SolutionString: String?
     

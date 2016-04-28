@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		A93EBDA71CBD4ACC00385912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */; };
-		A93EBDA91CBD4ACC00385912 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA81CBD4ACC00385912 /* ViewController.swift */; };
+		A93EBDA91CBD4ACC00385912 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA81CBD4ACC00385912 /* MainViewController.swift */; };
 		A93EBDAC1CBD4ACC00385912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93EBDAA1CBD4ACC00385912 /* Main.storyboard */; };
 		A93EBDAF1CBD4ACC00385912 /* SubtleSudoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDAD1CBD4ACC00385912 /* SubtleSudoku.xcdatamodeld */; };
 		A93EBDB11CBD4ACC00385912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A93EBDB01CBD4ACC00385912 /* Assets.xcassets */; };
 		A93EBDB41CBD4ACC00385912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93EBDB21CBD4ACC00385912 /* LaunchScreen.storyboard */; };
 		A9AC582B1CBFC550006AF4C4 /* AWSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC582A1CBFC550006AF4C4 /* AWSConstants.swift */; };
-		A9AC582D1CBFCA56006AF4C4 /* SudokuChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC582C1CBFCA56006AF4C4 /* SudokuChallenge.swift */; };
+		A9AC582D1CBFCA56006AF4C4 /* DyDBChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC582C1CBFCA56006AF4C4 /* DyDBChallenge.swift */; };
+		A9AE6F3A1CCE433F0058B9BF /* SudoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F391CCE433F0058B9BF /* SudoCell.swift */; };
+		A9AE6F3C1CCE437B0058B9BF /* SudoGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F3B1CCE437B0058B9BF /* SudoGrid.swift */; };
+		A9AE6F3E1CCE440E0058B9BF /* SudoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F3D1CCE440E0058B9BF /* SudoUtils.swift */; };
+		A9AE6F441CCF81870058B9BF /* ProblemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F431CCF81870058B9BF /* ProblemTableViewController.swift */; };
+		A9AE6F461CCF82C70058B9BF /* DyDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F451CCF82C70058B9BF /* DyDBManager.swift */; };
+		A9AE6F491CCF8C050058B9BF /* LCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F481CCF8C050058B9BF /* LCUtils.swift */; };
+		A9AE6F4B1CCFB2750058B9BF /* SudoChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F4A1CCFB2750058B9BF /* SudoChallenge.swift */; };
+		A9AE6F4D1CCFB4650058B9BF /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE6F4C1CCFB4650058B9BF /* CoreDataStackManager.swift */; };
 		BFBFF5A2817E757C02CBF252 /* Pods_SubtleSudoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD99A45842E58E7166F2792 /* Pods_SubtleSudoku.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +30,7 @@
 		851F9BCF5F115DAA9AFE5712 /* Pods-SubtleSudoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubtleSudoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SubtleSudoku/Pods-SubtleSudoku.debug.xcconfig"; sourceTree = "<group>"; };
 		A93EBDA31CBD4ACC00385912 /* SubtleSudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubtleSudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A93EBDA81CBD4ACC00385912 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A93EBDA81CBD4ACC00385912 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A93EBDAB1CBD4ACC00385912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A93EBDAE1CBD4ACC00385912 /* SubtleSudoku.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SubtleSudoku.xcdatamodel; sourceTree = "<group>"; };
 		A93EBDB01CBD4ACC00385912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,7 +38,15 @@
 		A93EBDB51CBD4ACC00385912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A93EBDBB1CBD507F00385912 /* AWS_Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWS_Bridge.h; sourceTree = "<group>"; };
 		A9AC582A1CBFC550006AF4C4 /* AWSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSConstants.swift; sourceTree = "<group>"; };
-		A9AC582C1CBFCA56006AF4C4 /* SudokuChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuChallenge.swift; sourceTree = "<group>"; };
+		A9AC582C1CBFCA56006AF4C4 /* DyDBChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DyDBChallenge.swift; sourceTree = "<group>"; };
+		A9AE6F391CCE433F0058B9BF /* SudoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoCell.swift; sourceTree = "<group>"; };
+		A9AE6F3B1CCE437B0058B9BF /* SudoGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoGrid.swift; sourceTree = "<group>"; };
+		A9AE6F3D1CCE440E0058B9BF /* SudoUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoUtils.swift; sourceTree = "<group>"; };
+		A9AE6F431CCF81870058B9BF /* ProblemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemTableViewController.swift; sourceTree = "<group>"; };
+		A9AE6F451CCF82C70058B9BF /* DyDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DyDBManager.swift; sourceTree = "<group>"; };
+		A9AE6F481CCF8C050058B9BF /* LCUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCUtils.swift; sourceTree = "<group>"; };
+		A9AE6F4A1CCFB2750058B9BF /* SudoChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoChallenge.swift; sourceTree = "<group>"; };
+		A9AE6F4C1CCFB4650058B9BF /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		BDD99A45842E58E7166F2792 /* Pods_SubtleSudoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SubtleSudoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEF88726BD4D366FA476733 /* Pods-SubtleSudoku.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubtleSudoku.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubtleSudoku/Pods-SubtleSudoku.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +102,7 @@
 		A93EBDA51CBD4ACC00385912 /* SubtleSudoku */ = {
 			isa = PBXGroup;
 			children = (
+				A9AE6F471CCF8BE40058B9BF /* Utils */,
 				A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */,
 				A9AC58251CBFBEB4006AF4C4 /* Model */,
 				A9AC58281CBFBF21006AF4C4 /* View */,
@@ -102,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				A93EBDAD1CBD4ACC00385912 /* SubtleSudoku.xcdatamodeld */,
-				A9AC582C1CBFCA56006AF4C4 /* SudokuChallenge.swift */,
+				A9AE6F371CCE420C0058B9BF /* Suduko */,
 				A9AC58261CBFBEE2006AF4C4 /* Clients */,
 			);
 			name = Model;
@@ -119,6 +136,8 @@
 		A9AC58271CBFBEF0006AF4C4 /* AWS */ = {
 			isa = PBXGroup;
 			children = (
+				A9AE6F451CCF82C70058B9BF /* DyDBManager.swift */,
+				A9AC582C1CBFCA56006AF4C4 /* DyDBChallenge.swift */,
 				A9AC582A1CBFC550006AF4C4 /* AWSConstants.swift */,
 			);
 			name = AWS;
@@ -134,9 +153,30 @@
 		A9AC58291CBFBF35006AF4C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A93EBDA81CBD4ACC00385912 /* ViewController.swift */,
+				A93EBDA81CBD4ACC00385912 /* MainViewController.swift */,
+				A9AE6F431CCF81870058B9BF /* ProblemTableViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		A9AE6F371CCE420C0058B9BF /* Suduko */ = {
+			isa = PBXGroup;
+			children = (
+				A9AE6F3D1CCE440E0058B9BF /* SudoUtils.swift */,
+				A9AE6F391CCE433F0058B9BF /* SudoCell.swift */,
+				A9AE6F3B1CCE437B0058B9BF /* SudoGrid.swift */,
+				A9AE6F4A1CCFB2750058B9BF /* SudoChallenge.swift */,
+			);
+			name = Suduko;
+			sourceTree = "<group>";
+		};
+		A9AE6F471CCF8BE40058B9BF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A9AE6F4C1CCFB4650058B9BF /* CoreDataStackManager.swift */,
+				A9AE6F481CCF8C050058B9BF /* LCUtils.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,10 +306,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9AE6F491CCF8C050058B9BF /* LCUtils.swift in Sources */,
 				A93EBDAF1CBD4ACC00385912 /* SubtleSudoku.xcdatamodeld in Sources */,
 				A9AC582B1CBFC550006AF4C4 /* AWSConstants.swift in Sources */,
-				A9AC582D1CBFCA56006AF4C4 /* SudokuChallenge.swift in Sources */,
-				A93EBDA91CBD4ACC00385912 /* ViewController.swift in Sources */,
+				A9AC582D1CBFCA56006AF4C4 /* DyDBChallenge.swift in Sources */,
+				A93EBDA91CBD4ACC00385912 /* MainViewController.swift in Sources */,
+				A9AE6F441CCF81870058B9BF /* ProblemTableViewController.swift in Sources */,
+				A9AE6F461CCF82C70058B9BF /* DyDBManager.swift in Sources */,
+				A9AE6F3A1CCE433F0058B9BF /* SudoCell.swift in Sources */,
+				A9AE6F4B1CCFB2750058B9BF /* SudoChallenge.swift in Sources */,
+				A9AE6F4D1CCFB4650058B9BF /* CoreDataStackManager.swift in Sources */,
+				A9AE6F3C1CCE437B0058B9BF /* SudoGrid.swift in Sources */,
+				A9AE6F3E1CCE440E0058B9BF /* SudoUtils.swift in Sources */,
 				A93EBDA71CBD4ACC00385912 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

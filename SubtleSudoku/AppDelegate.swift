@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Configure AWS Login credentials and singleton
         let credentialsProvider = AWSCognitoCredentialsProvider(
             regionType: CognitoRegionType, identityPoolId: CognitoIdentityPoolId)
         
@@ -27,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             region: DefaultServiceRegionType, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
+        
+        //Build the static sudoku intercell relationship objects and constants
+        SU.buildRelationships()
+        
         return true
     }
 
@@ -51,9 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        CoreDataStackManager.sharedInstance.saveContext()
     }
 
+    /*
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -116,6 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    */
 
 }
 

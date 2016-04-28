@@ -1,3 +1,11 @@
+//
+//  SudoGrid.swift
+//  SubtleSudoku
+//
+//  Created by Derek Crous on 25/04/2016.
+//  Copyright © 2016 Ludocrous Software. All rights reserved.
+//
+
 import Foundation
 
 
@@ -10,7 +18,7 @@ public class SudoGrid  {
     
     public var gridString: String {
         var gs: String = ""
-        for cell in cells {
+        for cell in SU.cells {
             if let sc =  grid[cell] {
                 gs += sc.gridStringValue
             }
@@ -20,7 +28,7 @@ public class SudoGrid  {
     
     
     public init() {
-        for cell in cells {
+        for cell in SU.cells {
             grid[cell] = SudoCell(gridRef: cell)
         }
     }
@@ -29,7 +37,7 @@ public class SudoGrid  {
         assert (gridString.characters.count == 81, "Grid initialisers must have 81 elements only")
         let values = Array(gridString.characters)
         for i in 0..<81 {
-            let cell: String = cells[i]
+            let cell: String = SU.cells[i]
             let value = values[i]
             assert(Array("123456789.0".characters).contains(value))
             if [".","0"].contains(value) {
@@ -61,7 +69,7 @@ public class SudoGrid  {
         }
     }
     
-     func eliminate (gridRef: String, entry: Int) -> Bool {
+    func eliminate (gridRef: String, entry: Int) -> Bool {
         if grid[gridRef]?.isPossibleValue(entry) == false {
             return true //Already gone !
         }
@@ -72,11 +80,11 @@ public class SudoGrid  {
         if possCount == 0 {return false } //Problem
         else if possCount == 1 {
             let d2 = grid[gridRef]?.possibleValues[0]
-            for s2 in peers[gridRef]! {
+            for s2 in SU.peers[gridRef]! {
                 if eliminate(s2, entry: d2!) == false {print("returning false from elimnate \(gridRef) with \(entry)");return false}
             }
         }
-        for members in membership[gridRef]! {
+        for members in SU.membership[gridRef]! {
             var placeCount = 0
             var entryPlace: String = ""
             for gr in members {
@@ -93,7 +101,7 @@ public class SudoGrid  {
         }
         return true
     }
-  
+    
     public func solve() -> Bool {
         for (ref,value) in problemValues {
             print ("Solving for \(ref) with \(value)")
