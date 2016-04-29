@@ -17,18 +17,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3w-LX-47r">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3w-LX-47r">
                                 <rect key="frame" x="241" y="285" width="119" height="30"/>
-                                <state key="normal" title="Load a Challenge"/>
+                                <state key="normal" title="List Puzzles"/>
                                 <connections>
-                                    <action selector="doSomething:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sHk-X7-4rr"/>
+                                    <action selector="listPuzzles:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BPp-Sm-k8S"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pld-vn-vJz">
+                                <rect key="frame" x="220" y="346" width="161" height="30"/>
+                                <state key="normal" title="List Current Challenges"/>
+                                <connections>
+                                    <action selector="listChallenges:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0LO-MO-wKa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgS-Wh-XWg">
+                                <rect key="frame" x="229" y="402" width="142" height="30"/>
+                                <state key="normal" title="Load Challenge Data"/>
+                                <connections>
+                                    <action selector="loadTempChallengeData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xKe-ni-tsa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtle Sudoku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qE7-fY-FUf">
+                                <rect key="frame" x="244" y="86" width="112" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xgS-Wh-XWg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7uk-Kg-IKZ"/>
                             <constraint firstItem="o3w-LX-47r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Er9-48-gb7"/>
+                            <constraint firstItem="Pld-vn-vJz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HLv-Ie-ZAB"/>
+                            <constraint firstItem="qE7-fY-FUf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="66" id="Nw9-zo-enD"/>
+                            <constraint firstItem="Pld-vn-vJz" firstAttribute="top" secondItem="o3w-LX-47r" secondAttribute="bottom" constant="31" id="SXB-0O-j6q"/>
                             <constraint firstItem="o3w-LX-47r" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xx5-30-aeH"/>
+                            <constraint firstItem="xgS-Wh-XWg" firstAttribute="top" secondItem="Pld-vn-vJz" secondAttribute="bottom" constant="26" id="rkn-ou-ILh"/>
+                            <constraint firstItem="qE7-fY-FUf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yov-b9-Ysv"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,10 +62,38 @@
             </objects>
             <point key="canvasLocation" x="34" y="258"/>
         </scene>
-        <!--Problem Table View Controller-->
+        <!--Challenge Table View Controller-->
+        <scene sceneID="104-Gx-oad">
+            <objects>
+                <tableViewController storyboardIdentifier="ChallengeTableViewController" id="2MN-67-bab" userLabel="Challenge Table View Controller" customClass="ChallengeTableViewController" customModule="SubtleSudoku" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lbg-a6-Ug2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="py5-q5-JEs">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="py5-q5-JEs" id="FTP-DH-SYG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2MN-67-bab" id="Id5-5D-h3d"/>
+                            <outlet property="delegate" destination="2MN-67-bab" id="ro3-Bd-J3K"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8lT-dO-dUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34" y="936"/>
+        </scene>
+        <!--Puzzle Table View Controller-->
         <scene sceneID="TRU-m2-9if">
             <objects>
-                <tableViewController storyboardIdentifier="ProblemTableViewController" id="JjD-aR-CkZ" customClass="ProblemTableViewController" customModule="SubtleSudoku" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PuzzleTableViewController" id="JjD-aR-CkZ" customClass="PuzzleTableViewController" customModule="SubtleSudoku" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wNg-Bw-eXS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,14 +110,14 @@
                                             <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5nI-Kr-i7C">
                                             <rect key="frame" x="15" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

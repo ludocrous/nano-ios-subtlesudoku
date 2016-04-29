@@ -15,29 +15,29 @@ import AWSDynamoDB
 class DyDBManager {
     static let sharedInstance = DyDBManager()
     
-    var challenges: [DyDBChallenge]
+    var puzzles: [DyDBPuzzle]
     
     
     private init() {  // private init protects singleton pattern.
-        challenges = [DyDBChallenge]()
+        puzzles = [DyDBPuzzle]()
     }
     
-    func loadSudokuChallenges (completionHandler: (success: Bool, errorString: String?) -> Void) {
+    func loadSudokuPuzzles (completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         
-        challenges.removeAll()
+        puzzles.removeAll()
         let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let queryExpression = AWSDynamoDBScanExpression()
         queryExpression.exclusiveStartKey = nil
         queryExpression.limit = 100
-        dynamoDBObjectMapper .scan(DyDBChallenge.self, expression: queryExpression) .continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
+        dynamoDBObjectMapper .scan(DyDBPuzzle.self, expression: queryExpression) .continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
             if (task.error == nil) {
                 if (task.result != nil) {
                     let paginatedOutput = task.result as! AWSDynamoDBPaginatedOutput
-                    for item in paginatedOutput.items as! [DyDBChallenge]{
-                        self.challenges.append(item)
+                    for item in paginatedOutput.items as! [DyDBPuzzle]{
+                        self.puzzles.append(item)
                     }
                     completionHandler(success: true, errorString: nil)
                 }

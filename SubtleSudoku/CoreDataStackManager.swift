@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 private let SQLITE_FILE_NAME = "SubtleSudoku.sqlite"
+private let MANAGED_OBJECT_FILE_NAME = "SubtleSudoku"
 
 class CoreDataStackManager {
     
@@ -39,7 +40,7 @@ class CoreDataStackManager {
         
         dbg("Instantiating the managedObjectModel property")
         
-        let modelURL = NSBundle.mainBundle().URLForResource("VirtualTourist", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource(MANAGED_OBJECT_FILE_NAME, withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     

@@ -9,18 +9,17 @@
 import Foundation
 import AWSDynamoDB
 
-class DyDBChallenge :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
-    var ChallengeId: NSNumber?
-    var Rating: String?
-    var ProblemString: String?
-    var SolutionString: String?
+class DyDBPuzzle :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
+    var puzzleId: String?
+    var problemString: String?
+    var solutionString: String?
     
     class func dynamoDBTableName() -> String! {
-        return "Sudoku"
+        return "SudokuPuzzles"
     }
     
     class func hashKeyAttribute() -> String! {
-        return "ChallengeId"
+        return "puzzleId"
     }
     
 }

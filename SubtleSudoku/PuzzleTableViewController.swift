@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProblemTableViewController: UITableViewController {
+class PuzzleTableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +18,12 @@ class ProblemTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        DyDBManager.sharedInstance.loadSudokuChallenges() { (success,errorString) in
+        DyDBManager.sharedInstance.loadSudokuPuzzles() { (success,errorString) in
             if success {
-                dbg("Succesfull load of records - \(DyDBManager.sharedInstance.challenges.count)")
+                dbg("Succesfull load of puzzles - \(DyDBManager.sharedInstance.puzzles.count)")
                 self.refreshView()
             } else {
-                dbg("There is a problem loading records")
+                dbg("There is a problem loading puzzles")
             }
         }
     }
@@ -52,7 +52,7 @@ class ProblemTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         dbg("Number of rows being called")
-        return DyDBManager.sharedInstance.challenges.count
+        return DyDBManager.sharedInstance.puzzles.count
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -67,11 +67,11 @@ class ProblemTableViewController: UITableViewController {
         
         // Configure the cell...
 //        if let myTableRows =  DyDBManager.sharedInstance.challenges {
-            let item = DyDBManager.sharedInstance.challenges[indexPath.row]
-            cell.textLabel?.text = "ID: \(item.ChallengeId!), Title: \(item.Rating!)"
+            let item = DyDBManager.sharedInstance.puzzles[indexPath.row]
+            cell.textLabel?.text = "Puzzle: \(item.puzzleId!)"
             
             if let myDetailTextLabel = cell.detailTextLabel {
-                myDetailTextLabel.text = item.ProblemString
+                myDetailTextLabel.text = item.problemString
             }
             
 //            if indexPath.row == DyDBManager.sharedInstance.challenges.count - 1 && !self.doneLoading {
