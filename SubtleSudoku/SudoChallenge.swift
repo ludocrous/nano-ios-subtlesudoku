@@ -16,18 +16,30 @@ class SudoChallenge : NSManagedObject {
     @NSManaged var solutionString: String
     @NSManaged var dateStarted: NSDate
     
+    lazy private var grid: SudoGrid = SudoGrid(gridString: self.problemString)
+        
+    
+    
+    
+    func screenDisplayValue(gridRef: String) -> (value: String, isInitial: Bool) {
+        let cellValue = grid.cellValueAtRef(gridRef)
+        return (cellValue, (grid.isOriginalCell(gridRef)))
+    }
+    
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
+        dbg("SudoCahllenge - Lower level init called")
     }
 
-    init(puzzleId: String, problemString: String, solutionString: String, context: NSManagedObjectContext) {
+    convenience init(puzzleId: String, problemString: String, solutionString: String, context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("SudoChallenge", inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
     
         self.puzzleId = puzzleId
         self.problemString = problemString
         self.solutionString = solutionString
         self.dateStarted = NSDate()
+        grid = SudoGrid(gridString: problemString)
         dbg("SudoChallenge instance created")
     }
 

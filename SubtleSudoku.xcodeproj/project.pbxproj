@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A929E1071CDF3D2E00F45097 /* ChallengeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E1061CDF3D2E00F45097 /* ChallengeDetailViewController.swift */; };
+		A929E1091CDF5B3400F45097 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E1081CDF5B3400F45097 /* GridCell.swift */; };
+		A929E10C1CDF930A00F45097 /* SudoChallengeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E10B1CDF930A00F45097 /* SudoChallengeDatasource.swift */; };
 		A93EBDA71CBD4ACC00385912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */; };
 		A93EBDA91CBD4ACC00385912 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA81CBD4ACC00385912 /* MainViewController.swift */; };
 		A93EBDAC1CBD4ACC00385912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93EBDAA1CBD4ACC00385912 /* Main.storyboard */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		851F9BCF5F115DAA9AFE5712 /* Pods-SubtleSudoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubtleSudoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SubtleSudoku/Pods-SubtleSudoku.debug.xcconfig"; sourceTree = "<group>"; };
+		A929E1061CDF3D2E00F45097 /* ChallengeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewController.swift; sourceTree = "<group>"; };
+		A929E1081CDF5B3400F45097 /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		A929E10B1CDF930A00F45097 /* SudoChallengeDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoChallengeDatasource.swift; sourceTree = "<group>"; };
 		A93EBDA31CBD4ACC00385912 /* SubtleSudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubtleSudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A93EBDA81CBD4ACC00385912 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +88,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A929E10A1CDF92CC00F45097 /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				A929E10B1CDF930A00F45097 /* SudoChallengeDatasource.swift */,
+			);
+			name = Datasources;
+			sourceTree = "<group>";
+		};
 		A93EBD9A1CBD4ACC00385912 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +134,7 @@
 		A9AC58251CBFBEB4006AF4C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A929E10A1CDF92CC00F45097 /* Datasources */,
 				A93EBDAD1CBD4ACC00385912 /* SubtleSudoku.xcdatamodeld */,
 				A9AE6F371CCE420C0058B9BF /* Suduko */,
 				A9AC58261CBFBEE2006AF4C4 /* Clients */,
@@ -148,6 +163,7 @@
 		A9AC58281CBFBF21006AF4C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A929E1081CDF5B3400F45097 /* GridCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -158,6 +174,7 @@
 				A93EBDA81CBD4ACC00385912 /* MainViewController.swift */,
 				A9AE6F431CCF81870058B9BF /* PuzzleTableViewController.swift */,
 				A9AE6F4E1CD2737F0058B9BF /* ChallengeTableViewController.swift */,
+				A929E1061CDF3D2E00F45097 /* ChallengeDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -321,8 +338,11 @@
 				A9AE6F4B1CCFB2750058B9BF /* SudoChallenge.swift in Sources */,
 				A9AE6F4D1CCFB4650058B9BF /* CoreDataStackManager.swift in Sources */,
 				A9AE6F3C1CCE437B0058B9BF /* SudoGrid.swift in Sources */,
+				A929E1071CDF3D2E00F45097 /* ChallengeDetailViewController.swift in Sources */,
 				A9AE6F3E1CCE440E0058B9BF /* SudoUtils.swift in Sources */,
+				A929E10C1CDF930A00F45097 /* SudoChallengeDatasource.swift in Sources */,
 				A93EBDA71CBD4ACC00385912 /* AppDelegate.swift in Sources */,
+				A929E1091CDF5B3400F45097 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

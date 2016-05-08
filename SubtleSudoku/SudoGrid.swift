@@ -110,6 +110,22 @@ public class SudoGrid  {
         return true
     }
     
+    func cellValueAtRef(gridRef: String) -> String {
+        if let cell = (grid[gridRef]) {
+            return cell.asSingleValueString("*")
+        } else {
+            return ""
+        }
+    }
+    
+    func isOriginalCell(gridRef: String) -> Bool {
+        if let _ = problemValues[gridRef] {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     public func searchSolve() -> Bool {
         if solved {return true}
         

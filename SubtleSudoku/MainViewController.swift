@@ -15,7 +15,7 @@ let soluStr1 = "4839216579673458212518764935481329767295641381367982453726895148
 let probStr2 = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
 let soluStr2 = "417369825632158947958724316825437169791586432346912758289643571573291684164875293"
 
-
+let testSolve = "...8.1..........435............7.8........1...2..3....6......75..34........2..6.."
 
 
 class MainViewController: UIViewController {
@@ -45,14 +45,22 @@ class MainViewController: UIViewController {
         self.presentViewController(resultVC, animated: true, completion: nil)
         
     }
-    
-    @IBAction func listPuzzles(sender: UIButton) {
-        segueToPuzzleList()
+    @IBAction func solveAPuzzle(sender: AnyObject) {
+        let myGrid = SudoGrid(gridString: testSolve)
+        myGrid.solve()
+        if myGrid.solved {
+            dbg("Grid is solved - [\(myGrid.gridString)]")
+       } else {
+            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
+        }
+        myGrid.searchSolve()
+        if myGrid.solved {
+            dbg("Grid is solved - [\(myGrid.gridString)]")
+        } else {
+            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
+        }
     }
     
-    @IBAction func listChallenges(sender: UIButton) {
-        segueToChallengeList()
-    }
 
     @IBAction func loadTempChallengeData(sender: AnyObject) {
         let sharedContext = CoreDataStackManager.sharedInstance.managedObjectContext

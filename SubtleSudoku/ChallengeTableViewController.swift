@@ -12,7 +12,7 @@ import CoreData
 class ChallengeTableViewController: UITableViewController {
     
     
-    var challenges:  [SudoChallenge]!
+    var challenges = [SudoChallenge]()
     
     
     override func viewDidLoad() {
@@ -73,13 +73,23 @@ class ChallengeTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//
+//        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ChallengeDetail") as! ChallengeDetailViewController
+//        controller.datasource = SudoChallengeDatasource(challenge: challenges[indexPath.item])
+//        self.navigationController!.pushViewController(controller, animated: true)
+//
+//    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         dbg("Segueing")
+        if segue.identifier == "Selection" {
+            let index = tableView.indexPathForCell(sender as! UITableViewCell)?.item
+            let challengeDetail = segue.destinationViewController as! ChallengeDetailViewController
+            challengeDetail.datasource = SudoChallengeDatasource(challenge: challenges[index!])
+        }
+        
     }
     
 //    lazy var fetchedResultsController: NSFetchedResultsController = {

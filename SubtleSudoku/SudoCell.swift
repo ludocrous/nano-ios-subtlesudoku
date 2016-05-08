@@ -51,6 +51,14 @@ public struct SudoCell: CustomStringConvertible {
         return result
     }
     
+    func asSingleValueString (invalidString: String = "") -> String {
+        if possiblesCount == 1 {
+            return String(possibleValues[0])
+        } else {
+            return invalidString
+        }
+    }
+    
     func bitsAsString (bits : SudoBits ) -> String {
         let bitStr = String(bits, radix:2)
         return bitStr.characters.count < 9  ? String(count: 9 - bitStr.characters.count, repeatedValue: UnicodeScalar("0")) + bitStr : bitStr
