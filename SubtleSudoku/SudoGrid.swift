@@ -27,7 +27,7 @@ public class SudoGrid  {
     }
     
     
-    public init() {
+    private init() {
         for cell in SU.cells {
             grid[cell] = SudoCell(gridRef: cell)
         }

@@ -14,11 +14,11 @@ class DyDBPuzzle :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
     var problemString: String?
     var solutionString: String?
     
-    class func dynamoDBTableName() -> String! {
+    class func dynamoDBTableName() -> String {
         return "SudokuPuzzles"
     }
     
-    class func hashKeyAttribute() -> String! {
+    class func hashKeyAttribute() -> String {
         return "puzzleId"
     }
     

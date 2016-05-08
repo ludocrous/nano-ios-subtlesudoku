@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '094D990E0E37FEECD38951B6'
+               BlueprintIdentifier = '4BF0DA3C3DF6F7D556AD7479'
                BlueprintName = 'Pods-SubtleSudoku'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_SubtleSudoku.framework'>

@@ -1,6 +1,6 @@
 //
 //  LCUtils.swift
-//  OSubtleSudoku
+//  SubtleSudoku
 //
 //  Created by Derek Crous on 06/10/2015.
 //  Copyright © 2015 Ludocrous Software. All rights reserved.

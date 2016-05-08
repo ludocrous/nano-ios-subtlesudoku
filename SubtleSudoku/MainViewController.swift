@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
 
     func segueToChallengeList() {
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
-        let resultVC = storyboard.instantiateViewControllerWithIdentifier("ChallengeTableViewController") as! UITableViewController
+        let resultVC = storyboard.instantiateViewControllerWithIdentifier("BaseNavController") as! UINavigationController
         self.presentViewController(resultVC, animated: true, completion: nil)
         
     }

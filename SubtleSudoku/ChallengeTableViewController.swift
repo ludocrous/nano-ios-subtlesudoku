@@ -72,7 +72,15 @@ class ChallengeTableViewController: UITableViewController {
         
         return cell
     }
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        dbg("Segueing")
+    }
     
 //    lazy var fetchedResultsController: NSFetchedResultsController = {
 //        let fetchRequest = NSFetchRequest (entityName: "SudoChallenge")
