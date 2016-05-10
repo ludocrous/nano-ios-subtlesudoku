@@ -103,7 +103,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="n3c-sj-Vd7" kind="show" identifier="Selection" id="Jgg-Ns-MSV"/>
+                                    <segue destination="n3c-sj-Vd7" kind="show" identifier="ShowChallenge" id="Jgg-Ns-MSV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,6 +155,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="tW0-fS-Xqe" kind="show" identifier="ShowDetail" id="AnW-w0-Eke"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

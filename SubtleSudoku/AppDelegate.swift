@@ -23,10 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Configure AWS Login credentials and singleton
         let credentialsProvider = AWSCognitoCredentialsProvider(
-            regionType: CognitoRegionType, identityPoolId: CognitoIdentityPoolId)
+            regionType: AWSConstants.CognitoRegionType, identityPoolId: AWSConstants.CognitoIdentityPoolId)
         
         let defaultServiceConfiguration = AWSServiceConfiguration(
-            region: DefaultServiceRegionType, credentialsProvider: credentialsProvider)
+            region: AWSConstants.DefaultServiceRegionType, credentialsProvider: credentialsProvider)
+        
+        //Shorten the timeout and retry values
+        defaultServiceConfiguration.maxRetryCount = AWSConstants.MaxRetry
+        defaultServiceConfiguration.timeoutIntervalForResource = AWSConstants.TimeoutInterval
         
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
         

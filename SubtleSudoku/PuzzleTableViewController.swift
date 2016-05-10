@@ -9,6 +9,9 @@
 import UIKit
 
 class PuzzleTableViewController: UITableViewController{
+    
+    var activityView: UIActivityIndicatorView?
+    var activityBlur: UIVisualEffectView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +21,9 @@ class PuzzleTableViewController: UITableViewController{
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        DyDBManager.sharedInstance.loadSudokuPuzzles() { (success,errorString) in
-            if success {
-                dbg("Succesfull load of puzzles - \(DyDBManager.sharedInstance.puzzles.count)")
-                self.refreshView()
-            } else {
-                dbg("There is a problem loading puzzles")
-            }
-        }
+        
+        loadPuzzleList()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +33,35 @@ class PuzzleTableViewController: UITableViewController{
     
     override func viewWillAppear(animated: Bool) {
         refreshView()
+    }
+    
+    func loadPuzzleList() {
+        let effect:UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        activityBlur = UIVisualEffectView(effect: effect)
+        activityBlur!.frame = self.view.bounds;
+        self.view.addSubview(activityBlur!)
+        
+        activityView  = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        activityView?.center = self.view.center
+        activityView?.color = UIColor.blackColor()
+        activityView?.startAnimating()
+        self.view.addSubview(activityView!)
+        
+        DyDBManager.sharedInstance.loadSudokuPuzzles() { (success,errorString) in
+
+            self.activityView?.stopAnimating()
+            self.activityView?.removeFromSuperview()
+            self.activityBlur?.removeFromSuperview()
+            if success {
+                dbg("Succesfull load of puzzles - \(DyDBManager.sharedInstance.puzzles.count)")
+                self.refreshView()
+            } else {
+                displayAlertOnMainThread("Error", message: errorString, onViewController: self)
+                err("There is a problem loading puzzles")
+            }
+        }
+        
+
     }
     
     func refreshView() {
