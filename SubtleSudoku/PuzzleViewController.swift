@@ -17,7 +17,10 @@ class PuzzleViewController: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     
     @IBAction func acceptChallenge(sender: AnyObject) {
-    
+        if let puzzle = puzzle {
+            ChallengeManager.sharedInstance.createNewChallenge(puzzle.puzzleId!, problemString: puzzle.problemString!, solutionString: puzzle.solutionString!)
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -32,9 +35,6 @@ class PuzzleViewController: UIViewController {
         prepareViewLayouts()
         setControls()
     }
-    
-    
-    
     
     func prepareViewLayouts() {
         collectionView.setNeedsLayout()

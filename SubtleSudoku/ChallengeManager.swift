@@ -49,6 +49,21 @@ class ChallengeManager {
         CoreDataStackManager.sharedInstance.saveContext()
     }
     
+    func createNewChallenge(puzzleId: String, problemString: String, solutionString: String) -> SudoChallenge {
+        let newChallenge = SudoChallenge(puzzleId: puzzleId, problemString: problemString, solutionString: solutionString, context: sharedContext)
+        challenges.append(newChallenge)
+        CoreDataStackManager.sharedInstance.saveContext()
+        return newChallenge
+    }
+    
+    func removeChallenge(challenge: SudoChallenge) {
+        if let index = challenges.indexOf(challenge) {
+            challenges.removeAtIndex(index)
+            sharedContext.deleteObject(challenge)
+            CoreDataStackManager.sharedInstance.saveContext()
+        }
+    }
+    
     func hasChallengeWithId (id: String) -> Bool {
         for challenge in challenges {
             if challenge.puzzleId == id {

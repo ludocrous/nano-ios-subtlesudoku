@@ -42,5 +42,10 @@ class SudoChallenge : NSManagedObject {
         grid = SudoGrid(gridString: problemString)
         dbg("SudoChallenge instance created")
     }
+    
+    override func prepareForDeletion() {
+        super.prepareForDeletion()
+        dbg("Prepare for deletion being called")
+    }
 
 }

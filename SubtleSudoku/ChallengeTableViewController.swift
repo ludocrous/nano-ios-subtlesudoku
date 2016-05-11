@@ -16,6 +16,7 @@ class ChallengeTableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
+        navigationItem.rightBarButtonItem = editButtonItem()
     }
     
     
@@ -32,10 +33,10 @@ class ChallengeTableViewController: UITableViewController {
         return ChallengeManager.sharedInstance.challenges.count
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return false
-    }
+//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        // Return false if you do not want the specified item to be editable.
+//        return false
+//    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         dbg("cell for row being called")
@@ -51,6 +52,25 @@ class ChallengeTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if editing {
+            tableView.setEditing(true, animated: true)
+        } else {
+            tableView.setEditing(false, animated: true)
+        }
+        
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let challenge = ChallengeManager.sharedInstance.challenges[indexPath.row]
+            ChallengeManager.sharedInstance.removeChallenge(challenge)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
     }
     
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
