@@ -15,6 +15,8 @@ struct SudoUtils {
     static let numberRows: Int = 9
     static let cols = "123456789"
     static let colsArray = Array(cols.characters)
+    static let digits = cols
+    static let digitsArray = Array(digits.characters)
     static let rows = "ABCDEFGHI"
     static let rowsArray = Array(rows.characters)
     static let entries = 1...9
@@ -22,6 +24,7 @@ struct SudoUtils {
     static var units = [[String]]()
     static var membership = [String: [[String]]]()
     static var peers = [String: [String]]()
+    
     
     static func createRefs (rows rows: [Character], cols: [Character]) -> [String] {
         var result = [String]()

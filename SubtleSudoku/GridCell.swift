@@ -8,30 +8,50 @@
 
 import UIKit
 
-let oddColor = UIColor.grayColor()
-let evenColor = UIColor.lightGrayColor()
+let firstBackgroundColor = UIColor.whiteColor()
+let secondBackgroundColor = UIColor.lightGrayColor()
+
 
 class GridCell: UICollectionViewCell {
-    @IBOutlet var optionLabels: [UILabel]!
-    @IBOutlet weak var optionView: UIView!
-    @IBOutlet weak var selectedView: UIView!
-    @IBOutlet weak var valueLabel: UILabel!
     
-    private var currentValue: String = ""
-    
+    var currentValue: String = ""
+    var index: Int = -1
     var isOriginalValue: Bool = false
-    
-    func setValue(value: String, isOriginal: Bool = false) {
-        isOriginalValue = isOriginal
-        valueLabel.text = "\(currentValue)"
-        setTextColor()
+    var indexOfCell: Int {
+        get {
+            return index
+        }
+        
     }
     
-    func setTextColor() {
-        if isOriginalValue {
-            valueLabel.textColor = UIColor.blackColor()
-        } else {
-            valueLabel.textColor = UIColor.greenColor()
+    
+    func initialize(index: Int, value: String, isOriginal: Bool = false) {
+        self.index = index
+        currentValue = value
+        isOriginalValue = isOriginal
+    }
+    
+    
+    func getTuple(index: Int) -> (result: Int, remainder: Int) {
+        assert((0..<81).contains(index), "Not a valid index")
+        let result = index / 9
+        let remainder = index % 9
+        return(result,remainder)
+    }
+    
+    func getBackColor() -> UIColor {
+        let (result, remainder) = getTuple(index)
+        switch (result, remainder) {
+        case (0...2, 3...5) :
+            fallthrough
+        case (3...5, 0...2):
+            fallthrough
+        case (3...5, 6...8):
+            fallthrough
+        case (6...8, 3...5):
+            return secondBackgroundColor
+        default:
+            return firstBackgroundColor
         }
     }
 }

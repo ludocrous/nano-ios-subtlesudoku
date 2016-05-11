@@ -21,6 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        configureAWSStack()
+        
+        //Build the static sudoku intercell relationship objects and constants
+        SU.buildRelationships()
+        
+        loadDataFromCoreData()
+        
+        return true
+    }
+    
+    private func configureAWSStack () {
         //Configure AWS Login credentials and singleton
         let credentialsProvider = AWSCognitoCredentialsProvider(
             regionType: AWSConstants.CognitoRegionType, identityPoolId: AWSConstants.CognitoIdentityPoolId)
@@ -33,11 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaultServiceConfiguration.timeoutIntervalForResource = AWSConstants.TimeoutInterval
         
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
-        
-        //Build the static sudoku intercell relationship objects and constants
-        SU.buildRelationships()
-        
-        return true
+    }
+    
+    private func loadDataFromCoreData() {
+        ChallengeManager.sharedInstance.loadChallenges()
+        if ChallengeManager.sharedInstance.challenges.count == 0 {
+            dbg("Core Data empty - creating sample data")
+            ChallengeManager.sharedInstance.createSampleData()
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

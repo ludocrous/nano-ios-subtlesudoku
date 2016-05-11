@@ -10,6 +10,10 @@
 		A929E1071CDF3D2E00F45097 /* ChallengeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E1061CDF3D2E00F45097 /* ChallengeDetailViewController.swift */; };
 		A929E1091CDF5B3400F45097 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E1081CDF5B3400F45097 /* GridCell.swift */; };
 		A929E10C1CDF930A00F45097 /* SudoChallengeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E10B1CDF930A00F45097 /* SudoChallengeDatasource.swift */; };
+		A929E14E1CE26E4300F45097 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E14D1CE26E4300F45097 /* PuzzleViewController.swift */; };
+		A929E1501CE2723C00F45097 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E14F1CE2723C00F45097 /* PreviewCell.swift */; };
+		A929E1521CE2909700F45097 /* SelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E1511CE2909700F45097 /* SelectedCell.swift */; };
+		A929E1541CE3235200F45097 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929E1531CE3235200F45097 /* ChallengeManager.swift */; };
 		A93EBDA71CBD4ACC00385912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */; };
 		A93EBDA91CBD4ACC00385912 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93EBDA81CBD4ACC00385912 /* MainViewController.swift */; };
 		A93EBDAC1CBD4ACC00385912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93EBDAA1CBD4ACC00385912 /* Main.storyboard */; };
@@ -35,6 +39,10 @@
 		A929E1061CDF3D2E00F45097 /* ChallengeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewController.swift; sourceTree = "<group>"; };
 		A929E1081CDF5B3400F45097 /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 		A929E10B1CDF930A00F45097 /* SudoChallengeDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoChallengeDatasource.swift; sourceTree = "<group>"; };
+		A929E14D1CE26E4300F45097 /* PuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
+		A929E14F1CE2723C00F45097 /* PreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		A929E1511CE2909700F45097 /* SelectedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedCell.swift; sourceTree = "<group>"; };
+		A929E1531CE3235200F45097 /* ChallengeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		A93EBDA31CBD4ACC00385912 /* SubtleSudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubtleSudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93EBDA61CBD4ACC00385912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A93EBDA81CBD4ACC00385912 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				A929E1081CDF5B3400F45097 /* GridCell.swift */,
+				A929E1511CE2909700F45097 /* SelectedCell.swift */,
+				A929E14F1CE2723C00F45097 /* PreviewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -173,6 +183,7 @@
 			children = (
 				A93EBDA81CBD4ACC00385912 /* MainViewController.swift */,
 				A9AE6F431CCF81870058B9BF /* PuzzleTableViewController.swift */,
+				A929E14D1CE26E4300F45097 /* PuzzleViewController.swift */,
 				A9AE6F4E1CD2737F0058B9BF /* ChallengeTableViewController.swift */,
 				A929E1061CDF3D2E00F45097 /* ChallengeDetailViewController.swift */,
 			);
@@ -186,6 +197,7 @@
 				A9AE6F391CCE433F0058B9BF /* SudoCell.swift */,
 				A9AE6F3B1CCE437B0058B9BF /* SudoGrid.swift */,
 				A9AE6F4A1CCFB2750058B9BF /* SudoChallenge.swift */,
+				A929E1531CE3235200F45097 /* ChallengeManager.swift */,
 			);
 			name = Suduko;
 			sourceTree = "<group>";
@@ -329,13 +341,17 @@
 				A9AE6F491CCF8C050058B9BF /* LCUtils.swift in Sources */,
 				A9AE6F4F1CD2737F0058B9BF /* ChallengeTableViewController.swift in Sources */,
 				A93EBDAF1CBD4ACC00385912 /* SubtleSudoku.xcdatamodeld in Sources */,
+				A929E1541CE3235200F45097 /* ChallengeManager.swift in Sources */,
 				A9AC582B1CBFC550006AF4C4 /* AWSConstants.swift in Sources */,
 				A9AC582D1CBFCA56006AF4C4 /* DyDBPuzzle.swift in Sources */,
 				A93EBDA91CBD4ACC00385912 /* MainViewController.swift in Sources */,
+				A929E1521CE2909700F45097 /* SelectedCell.swift in Sources */,
 				A9AE6F441CCF81870058B9BF /* PuzzleTableViewController.swift in Sources */,
 				A9AE6F461CCF82C70058B9BF /* DyDBManager.swift in Sources */,
+				A929E1501CE2723C00F45097 /* PreviewCell.swift in Sources */,
 				A9AE6F3A1CCE433F0058B9BF /* SudoCell.swift in Sources */,
 				A9AE6F4B1CCFB2750058B9BF /* SudoChallenge.swift in Sources */,
+				A929E14E1CE26E4300F45097 /* PuzzleViewController.swift in Sources */,
 				A9AE6F4D1CCFB4650058B9BF /* CoreDataStackManager.swift in Sources */,
 				A9AE6F3C1CCE437B0058B9BF /* SudoGrid.swift in Sources */,
 				A929E1071CDF3D2E00F45097 /* ChallengeDetailViewController.swift in Sources */,

@@ -94,11 +94,17 @@ class PuzzleTableViewController: UITableViewController{
         
         // Configure the cell...
 //        if let myTableRows =  DyDBManager.sharedInstance.challenges {
-            let item = DyDBManager.sharedInstance.puzzles[indexPath.row]
-            cell.textLabel?.text = "Puzzle: \(item.puzzleId!)"
+        let item = DyDBManager.sharedInstance.puzzles[indexPath.row]
+        if ChallengeManager.sharedInstance.hasChallengeWithId(item.puzzleId!) {
+            cell.textLabel?.text = "\(item.puzzleId!) - (Challenge Accepted)"
+            cell.textLabel?.textColor = UIColor.redColor()
+        } else {
+            cell.textLabel?.text = "\(item.puzzleId!)"
+        }
             
             if let myDetailTextLabel = cell.detailTextLabel {
-                myDetailTextLabel.text = item.problemString
+                //myDetailTextLabel.text = item.problemString
+                myDetailTextLabel.text = "Rating: \(item.puzzleRating) Unsolved Elements: \(item.unsolvedCount())"
             }
             
 //            if indexPath.row == DyDBManager.sharedInstance.challenges.count - 1 && !self.doneLoading {
@@ -108,7 +114,18 @@ class PuzzleTableViewController: UITableViewController{
         return cell
     }
 
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        dbg("Segueing")
+        if segue.identifier == "ShowPreview" {
+            let index = tableView.indexPathForCell(sender as! UITableViewCell)?.item
+            let puzzleDetail = segue.destinationViewController as! PuzzleViewController
+            //let item = DyDBManager.sharedInstance.puzzles[index!]
+            puzzleDetail.puzzleIndex = index!
+            dbg("Setting index in view")
+        }
+        
+    }
+   
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

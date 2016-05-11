@@ -12,34 +12,14 @@ import CoreData
 class ChallengeTableViewController: UITableViewController {
     
     
-    var challenges = [SudoChallenge]()
+//    var challenges = [SudoChallenge]()
     
     
     override func viewDidLoad() {
-        loadChallenges()
     }
     
     
     
-    func loadChallenges() {
-        challenges = fetchAllChallenges()
-        dbg("Challenges loaded - record count: \(challenges.count)")
-    }
-    
-    func fetchAllChallenges() -> [SudoChallenge] {
-        let fetchRequest = NSFetchRequest(entityName: "SudoChallenge")
-        do {
-            return try sharedContext.executeFetchRequest(fetchRequest) as! [SudoChallenge]
-        } catch let error as NSError {
-            print("Error in SudoChallenge fetch - \(error)")
-            return [SudoChallenge]()
-        }
-    }
-    
-    lazy var sharedContext: NSManagedObjectContext = {
-        return CoreDataStackManager.sharedInstance.managedObjectContext
-    }()
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         dbg("Number of secs being called")
@@ -49,7 +29,7 @@ class ChallengeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         dbg("Number of rows being called")
-        return challenges.count
+        return ChallengeManager.sharedInstance.challenges.count
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -63,7 +43,7 @@ class ChallengeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         // Configure the cell...
-        let item = challenges[indexPath.row]
+        let item = ChallengeManager.sharedInstance.challenges[indexPath.row]
         cell.textLabel?.text = "Challenge: \(item.puzzleId)"
         
         if let myDetailTextLabel = cell.detailTextLabel {
@@ -84,10 +64,10 @@ class ChallengeTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         dbg("Segueing")
-        if segue.identifier == "Selection" {
+        if segue.identifier == "ShowChallenge" {
             let index = tableView.indexPathForCell(sender as! UITableViewCell)?.item
             let challengeDetail = segue.destinationViewController as! ChallengeDetailViewController
-            challengeDetail.datasource = SudoChallengeDatasource(challenge: challenges[index!])
+            challengeDetail.datasource = SudoChallengeDatasource(challenge: ChallengeManager.sharedInstance.challenges[index!])
         }
         
     }

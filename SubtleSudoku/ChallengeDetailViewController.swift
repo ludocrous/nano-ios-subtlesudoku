@@ -57,11 +57,14 @@ class ChallengeDetailViewController: UIViewController {
     func collectionView(collectionView: UICollectionView,
                           cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BaseCell", forIndexPath: indexPath) as! GridCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BaseCell", forIndexPath: indexPath) as! SelectedCell
         
         let (cellValue,isOriginal) = (datasource?.getCellDisplayValueAndType(indexPath.item))!
         
-        cell.setValue(cellValue, isOriginal: isOriginal)
+        cell.initialize(indexPath.item, value: cellValue, isOriginal: isOriginal)
+        cell.setColors()
+        cell.setLabel()
+        
         dbg("Cell value: \(cellValue) - isOrig: \(isOriginal)")
         return cell
     }
