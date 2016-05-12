@@ -12,8 +12,8 @@ class PuzzleViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var detailView: UIView!
-    @IBOutlet weak var difficultyLabel: UILabel!
     @IBOutlet weak var unsolvedLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
 
@@ -21,6 +21,8 @@ class PuzzleViewController: UIViewController {
     private var puzzle: DyDBPuzzle?
     private var solution: String = ""
     private var puzzleArray: [Character] = [Character]()
+    private var solved: Bool = false
+    private var requiredBacktrack: Bool = false
     
     override func viewDidLoad() {
         dbg("View Did load called")
@@ -46,10 +48,8 @@ class PuzzleViewController: UIViewController {
         collectionView.layoutIfNeeded()
         
         collectionView.frame.size.height = collectionView.frame.size.width
-        dbg("Setting size: \(collectionView.frame.size.height)")
         
         let gridWidth = Int(CGRectGetWidth(collectionView!.frame) / 9)
-        dbg("Setting grid width: \(gridWidth)")
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: gridWidth, height: gridWidth)
         collectionView.setNeedsLayout()
@@ -65,29 +65,49 @@ class PuzzleViewController: UIViewController {
         }
         puzzle = DyDBManager.sharedInstance.puzzles[index]
         puzzleArray = puzzle!.puzzleArray
+        solved = false
+        requiredBacktrack = false
         
         let tempGrid = SudoGrid(gridString: puzzle!.problemString!)
         tempGrid.solve()
         if tempGrid.solved {
-            descriptionLabel.text = "PROCESS OF ELIMINATION"
             solution = tempGrid.gridString
+            solved = true
+            requiredBacktrack = false
         } else {
             tempGrid.searchSolve()
             if tempGrid.solved {
-                descriptionLabel.text = "TRAIL AND ERROR"
-                solution = tempGrid.gridString
-            } else {
-                descriptionLabel.text = "UNSOLVABLE"
+                solved = true
+                requiredBacktrack = true
             }
         }
     }
     
     func setControls() {
         self.navigationItem.title = puzzle!.puzzleId
+
         if ChallengeManager.sharedInstance.hasChallengeWithId(puzzle!.puzzleId!) {
-            descriptionLabel.text = "This challenge has already been accepted"
+            progressLabel.text = "Challenge in progress"
+            progressLabel.textColor = UIColor.redColor()
             acceptButton.enabled = false
+        } else {
+            progressLabel.text = ""
+            acceptButton.enabled = true
         }
+        unsolvedLabel.text = "\(puzzle!.unsolvedCount()) unresolved cells"
+        if solved {
+            if !requiredBacktrack {
+                descriptionLabel.text = "Solve by PROCESS OF ELIMINATION"
+                descriptionLabel.textColor = UIColor.greenColor()
+            } else {
+                descriptionLabel.text = "Solve by TRAIL AND ERROR"
+                descriptionLabel.textColor = UIColor.redColor()
+            }
+        } else {
+            descriptionLabel.text = "ERROR: No solution !"
+            descriptionLabel.textColor = UIColor.redColor()
+        }
+
     }
 
 

@@ -74,28 +74,3 @@ class DyDBManager {
 
 
 
-/*
-func loadSudokuChallenges() {
-    
-    let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-    
-    dynamoDBObjectMapper .load(DyDBChallenge.self, hashKey: 1, rangeKey: nil) .continueWithExecutor(AWSExecutor.mainThreadExecutor(), withBlock: { (task:AWSTask!) -> AnyObject! in
-        if (task.error == nil) {
-            if (task.result != nil) {
-                let sd = task.result as! DyDBChallenge
-                print("Loaded solution #\(sd.ChallengeId) with problem \(sd.ProblemString!)\nand solution \(sd.SolutionString!)")
-//                self.result = (sd.ProblemString!,sd.SolutionString!)
-            }
-        } else {
-            print("Error: \(task.error)")
-            let alertController = UIAlertController(title: "Failed to get item from table.", message: task.error!.description, preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: { (action:UIAlertAction) -> Void in
-            })
-            alertController.addAction(okAction)
-//            self.presentViewController(alertController, animated: true, completion: nil)
-            
-        }
-        return nil
-    })
-}
-*/

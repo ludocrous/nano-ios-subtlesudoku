@@ -34,13 +34,11 @@ class ChallengeTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        dbg("Number of secs being called")
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        dbg("Number of rows being called")
         return ChallengeManager.sharedInstance.challenges.count
     }
     
@@ -50,13 +48,12 @@ class ChallengeTableViewController: UITableViewController {
 //    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        dbg("cell for row being called")
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         // Configure the cell...
         let item = ChallengeManager.sharedInstance.challenges[indexPath.row]
-        cell.textLabel?.text = "Challenge: \(item.puzzleId)"
+        cell.textLabel?.text = "\(item.puzzleId)"
         
         if let myDetailTextLabel = cell.detailTextLabel {
             myDetailTextLabel.text = item.problemString

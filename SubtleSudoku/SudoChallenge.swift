@@ -28,7 +28,7 @@ class SudoChallenge : NSManagedObject {
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
-        dbg("SudoCahllenge - Lower level init called")
+        dbg("SudoChallenge - Lower level init called")
     }
 
     convenience init(puzzleId: String, problemString: String, solutionString: String, context: NSManagedObjectContext) {
@@ -46,6 +46,10 @@ class SudoChallenge : NSManagedObject {
     override func prepareForDeletion() {
         super.prepareForDeletion()
         dbg("Prepare for deletion being called")
+    }
+    
+    func setIntialValues () {
+        grid.applyProblemValues()
     }
 
 }

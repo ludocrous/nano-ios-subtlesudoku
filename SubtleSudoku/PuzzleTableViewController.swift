@@ -73,13 +73,11 @@ class PuzzleTableViewController: UITableViewController{
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        dbg("Number of secs being called")
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        dbg("Number of rows being called")
         return DyDBManager.sharedInstance.puzzles.count
     }
 
@@ -89,7 +87,6 @@ class PuzzleTableViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        dbg("cell for row being called")
 
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
@@ -97,7 +94,7 @@ class PuzzleTableViewController: UITableViewController{
 //        if let myTableRows =  DyDBManager.sharedInstance.challenges {
         let item = DyDBManager.sharedInstance.puzzles[indexPath.row]
         if ChallengeManager.sharedInstance.hasChallengeWithId(item.puzzleId!) {
-            cell.textLabel?.text = "\(item.puzzleId!) - (Challenge Accepted)"
+            cell.textLabel?.text = "\(item.puzzleId!) - (Challenge accepted)"
             cell.textLabel?.textColor = UIColor.redColor()
         } else {
             cell.textLabel?.text = "\(item.puzzleId!)"
@@ -106,7 +103,7 @@ class PuzzleTableViewController: UITableViewController{
             
             if let myDetailTextLabel = cell.detailTextLabel {
                 //myDetailTextLabel.text = item.problemString
-                myDetailTextLabel.text = "Rating: \(item.puzzleRating) Unsolved Elements: \(item.unsolvedCount())"
+                myDetailTextLabel.text = "Unresolved Cells: \(item.unsolvedCount())"
             }
             
 //            if indexPath.row == DyDBManager.sharedInstance.challenges.count - 1 && !self.doneLoading {
@@ -123,7 +120,6 @@ class PuzzleTableViewController: UITableViewController{
             let puzzleDetail = segue.destinationViewController as! PuzzleViewController
             //let item = DyDBManager.sharedInstance.puzzles[index!]
             puzzleDetail.puzzleIndex = index!
-            dbg("Setting index in view")
         }
         
     }

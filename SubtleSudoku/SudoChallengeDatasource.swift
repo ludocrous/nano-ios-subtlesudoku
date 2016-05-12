@@ -37,6 +37,7 @@ class SudoChallengeDatasource {
 
     init(challenge: SudoChallenge) {
         self.challenge = challenge
+        self.challenge.setIntialValues()
     }
     
     

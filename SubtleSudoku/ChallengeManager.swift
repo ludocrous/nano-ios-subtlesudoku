@@ -41,7 +41,7 @@ class ChallengeManager {
         do {
             return try sharedContext.executeFetchRequest(fetchRequest) as! [SudoChallenge]
         } catch let error as NSError {
-            print("Error in fetchAllChallenges - \(error)")
+            err("Error in fetchAllChallenges - \(error)")
             return [SudoChallenge]()
         }
     }

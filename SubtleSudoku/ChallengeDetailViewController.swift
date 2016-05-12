@@ -30,7 +30,7 @@ class ChallengeDetailViewController: UIViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: gridWidth, height: gridWidth)
         dbg ("Final - Height: \(collectionView.bounds.height) - Width: \(collectionView.bounds.width)")
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +47,6 @@ class ChallengeDetailViewController: UIViewController {
 //    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dbg("Calling number of items in sections")
         guard datasource != nil else {
             return 0
         }
@@ -65,7 +64,7 @@ class ChallengeDetailViewController: UIViewController {
         cell.setColors()
         cell.setLabel()
         
-        dbg("Cell value: \(cellValue) - isOrig: \(isOriginal)")
+        //dbg("Cell value: \(cellValue) - isOrig: \(isOriginal)")
         return cell
     }
     

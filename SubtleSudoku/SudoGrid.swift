@@ -49,6 +49,40 @@ public class SudoGrid  {
         }
     }
     
+    //MARK: Code to progressively analyse puzzle
+    
+    func setValue(gridRef: String, entry: Int) {
+        if var cell = grid[gridRef] {
+            cell.setToSpecificValue(entry)
+        }
+    }
+    
+    func applyProblemValues() {
+        for (ref, value) in problemValues {
+            setValue(ref, entry: value)
+        }
+    }
+    
+    func cellValueAtRef(gridRef: String) -> String {
+        if let cell = (grid[gridRef]) {
+            return cell.asSingleValueString("*")
+        } else {
+            return ""
+        }
+    }
+    
+    func isOriginalCell(gridRef: String) -> Bool {
+        if let _ = problemValues[gridRef] {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+
+    
+    //MARK: Code to solve puzzle completely
+    
     var solved: Bool {
         for (_,cell) in grid {
             if cell.possiblesCount != 1 {return false }
@@ -60,14 +94,15 @@ public class SudoGrid  {
         if var cell = grid[gridRef] {
             cell.eliminatePossibleValue(entry)
             for d2 in cell.possibleValues {
-                if eliminate(gridRef, entry: d2) == false {print("returning false from assign \(gridRef) with \(entry)");  return false }
+                if eliminate(gridRef, entry: d2) == false {err("returning false from assign \(gridRef) with \(entry)");  return false }
             }
             return true
         } else {
-            print ("Problem")
+            err ("Problem")
             return false
         }
     }
+    
     
     func eliminate (gridRef: String, entry: Int) -> Bool {
         if grid[gridRef]?.isPossibleValue(entry) == false {
@@ -81,7 +116,7 @@ public class SudoGrid  {
         else if possCount == 1 {
             let d2 = grid[gridRef]?.possibleValues[0]
             for s2 in SU.peers[gridRef]! {
-                if eliminate(s2, entry: d2!) == false {print("returning false from elimnate \(gridRef) with \(entry)");return false}
+                if eliminate(s2, entry: d2!) == false {err("returning false from eliminate \(gridRef) with \(entry)");return false}
             }
         }
         for members in SU.membership[gridRef]! {
@@ -104,26 +139,10 @@ public class SudoGrid  {
     
     public func solve() -> Bool {
         for (ref,value) in problemValues {
-            print ("Solving for \(ref) with \(value)")
+            dbg ("Solving for \(ref) with \(value)")
             if assign(ref, entry: value) == false {return false}
         }
         return true
-    }
-    
-    func cellValueAtRef(gridRef: String) -> String {
-        if let cell = (grid[gridRef]) {
-            return cell.asSingleValueString("*")
-        } else {
-            return ""
-        }
-    }
-    
-    func isOriginalCell(gridRef: String) -> Bool {
-        if let _ = problemValues[gridRef] {
-            return true
-        } else {
-            return false
-        }
     }
     
     public func searchSolve() -> Bool {
@@ -138,7 +157,7 @@ public class SudoGrid  {
                 minRef = ref
             }
         }
-        print ("Lowest tree count is \(minOptions) for \(minRef)")
+        dbg ("Lowest tree count is \(minOptions) for \(minRef)")
         let poss = grid[minRef]!.possibleValues
         for possValue in poss {
             let gridCopy = grid
@@ -149,7 +168,7 @@ public class SudoGrid  {
                 grid = gridCopy
             }
         }
-        print ("Returning \(solved)")
+        dbg ("Returning \(solved)")
         return solved
         
     }

@@ -14,10 +14,6 @@ class DyDBPuzzle :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
     var problemString: String?
     var solutionString: String?
     
-    var puzzleRating: Int {
-        return Int(Double(unsolvedCount()) / (81 - 17) * 100)
-    }
-    
     var puzzleArray: [Character] {
         guard let probStr = problemString else {return [Character]() }
         return Array(probStr.characters)

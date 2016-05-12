@@ -32,7 +32,7 @@ public struct SudoCell: CustomStringConvertible {
         } else if possVals.count > 1 {
             return "."
         } else {
-            print ("Problem exists - should be at least one possible value not \(possVals.count)")
+            err ("Problem exists - should be at least one possible value not \(possVals.count)")
             return "X"
         }
     }

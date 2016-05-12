@@ -76,7 +76,7 @@ struct SudoUtils {
                 cellSet.removeAtIndex(index!)
                 peers[cell] = Array(cellSet)
             } else {
-                print("Problem - this should not be nil")
+                err("Problem - this should not be nil")
             }
         }
     }

@@ -15,7 +15,7 @@ let soluStr1 = "4839216579673458212518764935481329767295641381367982453726895148
 let probStr2 = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
 let soluStr2 = "417369825632158947958724316825437169791586432346912758289643571573291684164875293"
 
-let testSolve = "...8.1..........435............7.8........1...2..3....6......75..34........2..6.."
+let testSolve = "2...8.3...6..7..84.3.5..2.9...1.54.8.........4.27.6...3.1..7.4.72..4..6...4.1...3"
 
 
 class MainViewController: UIViewController {
@@ -47,18 +47,22 @@ class MainViewController: UIViewController {
     }
     @IBAction func solveAPuzzle(sender: AnyObject) {
         let myGrid = SudoGrid(gridString: testSolve)
-        myGrid.solve()
-        if myGrid.solved {
-            dbg("Grid is solved - [\(myGrid.gridString)]")
-       } else {
-            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
-        }
-        myGrid.searchSolve()
-        if myGrid.solved {
-            dbg("Grid is solved - [\(myGrid.gridString)]")
-        } else {
-            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
-        }
+        dbg("GS Before: \(myGrid.gridString)")
+        myGrid.applyProblemValues()
+        dbg("GS After: \(myGrid.gridString)")
+        
+//        myGrid.solve()
+//        if myGrid.solved {
+//            dbg("Grid is solved - [\(myGrid.gridString)]")
+//       } else {
+//            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
+//        }
+//        myGrid.searchSolve()
+//        if myGrid.solved {
+//            dbg("Grid is solved - [\(myGrid.gridString)]")
+//        } else {
+//            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
+//        }
     }
     
 
@@ -67,8 +71,8 @@ class MainViewController: UIViewController {
         
         let entry1 = SudoChallenge(puzzleId: "EASY 0001", problemString: probStr1, solutionString: soluStr1, context: sharedContext)
         let entry2 = SudoChallenge(puzzleId: "EASY 0002", problemString: probStr2, solutionString: soluStr2, context: sharedContext)
-        print("Entry \(entry1.puzzleId) created with start of \(entry1.dateStarted)")
-        print("Entry \(entry2.puzzleId) created with start of \(entry2.dateStarted)")
+        dbg("Entry \(entry1.puzzleId) created with start of \(entry1.dateStarted)")
+        dbg("Entry \(entry2.puzzleId) created with start of \(entry2.dateStarted)")
         CoreDataStackManager.sharedInstance.saveContext()
         
     }
