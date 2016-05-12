@@ -52,8 +52,12 @@ public class SudoGrid  {
     //MARK: Code to progressively analyse puzzle
     
     func setValue(gridRef: String, entry: Int) {
-        if var cell = grid[gridRef] {
-            cell.setToSpecificValue(entry)
+        guard(grid[gridRef] != nil) else {err("Invalid grid ref "); return}
+        switch entry {
+        case 1...9 :
+            grid[gridRef]!.setToSpecificValue(entry)
+        default:
+            grid[gridRef]!.resetAllPossibleValues()
         }
     }
     
@@ -65,7 +69,7 @@ public class SudoGrid  {
     
     func cellValueAtRef(gridRef: String) -> String {
         if let cell = (grid[gridRef]) {
-            return cell.asSingleValueString("*")
+            return cell.asSingleValueString("")
         } else {
             return ""
         }

@@ -45,18 +45,28 @@ class MainViewController: UIViewController {
         self.presentViewController(resultVC, animated: true, completion: nil)
         
     }
-    @IBAction func solveAPuzzle(sender: AnyObject) {
+    @IBAction func workAPuzzle(sender: AnyObject) {
         let myGrid = SudoGrid(gridString: testSolve)
         dbg("GS Before: \(myGrid.gridString)")
         myGrid.applyProblemValues()
         dbg("GS After: \(myGrid.gridString)")
         
-//        myGrid.solve()
-//        if myGrid.solved {
-//            dbg("Grid is solved - [\(myGrid.gridString)]")
-//       } else {
-//            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
-//        }
+        myGrid.setValue("A2", entry: 5)
+        dbg("GS After: \(myGrid.gridString)")
+    }
+    
+    @IBAction func solveAPuzzle(sender: AnyObject) {
+        let myGrid = SudoGrid(gridString: testSolve)
+        dbg("GS Before: \(myGrid.gridString)")
+        //myGrid.applyProblemValues()
+        dbg("GS After: \(myGrid.gridString)")
+        
+        myGrid.solve()
+        if myGrid.solved {
+            dbg("Grid is solved - [\(myGrid.gridString)]")
+       } else {
+            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
+        }
 //        myGrid.searchSolve()
 //        if myGrid.solved {
 //            dbg("Grid is solved - [\(myGrid.gridString)]")

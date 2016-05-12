@@ -17,13 +17,14 @@ class SudoChallenge : NSManagedObject {
     @NSManaged var dateStarted: NSDate
     
     lazy private var grid: SudoGrid = SudoGrid(gridString: self.problemString)
-        
     
-    
-    
-    func screenDisplayValue(gridRef: String) -> (value: String, isInitial: Bool) {
+    func screenDisplayValue(gridRef: String) -> String {
         let cellValue = grid.cellValueAtRef(gridRef)
-        return (cellValue, (grid.isOriginalCell(gridRef)))
+        return cellValue
+    }
+
+    func isOriginalCell(gridRef: String) -> Bool {
+        return (grid.isOriginalCell(gridRef))
     }
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -48,8 +49,13 @@ class SudoChallenge : NSManagedObject {
         dbg("Prepare for deletion being called")
     }
     
+    func setUserValue(gridRef: String, value: Int) {
+        grid.setValue(gridRef, entry: value)
+    }
+    
     func setIntialValues () {
         grid.applyProblemValues()
     }
+ 
 
 }

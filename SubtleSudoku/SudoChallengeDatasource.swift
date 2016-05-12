@@ -30,9 +30,18 @@ class SudoChallengeDatasource {
         return SU.cells[index]
     }
         
-    func getCellDisplayValueAndType(index: Int) -> (String,Bool) {
+    func getCellDisplayValue(index: Int) -> String {
         let gridRef = indexToGridRef(index)
         return challenge.screenDisplayValue(gridRef)
+    }
+    
+    func isOriginalValue(index: Int) -> Bool {
+        let gridRef = indexToGridRef(index)
+        return challenge.isOriginalCell(gridRef)
+    }
+    
+    func setUserValue(index: Int, value: Int) {
+        challenge.setUserValue(indexToGridRef(index), value: value)
     }
 
     init(challenge: SudoChallenge) {

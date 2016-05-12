@@ -12,25 +12,17 @@ class ChallengeDetailViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var controlsView: UIView!
+    @IBOutlet weak var selectionView: UIView!
+    @IBOutlet weak var optionsView: UIView!
+    @IBOutlet var selectionButtons: [UIButton]!
     
     var datasource : SudoChallengeDatasource?
+    var selectedCellIndex: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        collectionView.setNeedsLayout()
-        collectionView.layoutIfNeeded()
-        controlsView.setNeedsLayout()
-        controlsView.layoutIfNeeded()
-        
-        collectionView.frame.size.height = collectionView.frame.size.width
-
-        let gridWidth = Int(CGRectGetWidth(collectionView!.frame) / 9)
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: gridWidth, height: gridWidth)
-        dbg ("Final - Height: \(collectionView.bounds.height) - Width: \(collectionView.bounds.width)")
-        
+        setLayout()
+        setSelectionControlsEnabled(false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,13 +30,30 @@ class ChallengeDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setLayout() {
+        // Do any additional setup after loading the view.
+        collectionView.setNeedsLayout()
+        collectionView.layoutIfNeeded()
+        controlsView.setNeedsLayout()
+        controlsView.layoutIfNeeded()
+        
+        collectionView.frame.size.height = collectionView.frame.size.width
+        
+        let gridWidth = Int(CGRectGetWidth(collectionView!.frame) / 9)
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: gridWidth, height: gridWidth)
+        dbg ("Final - Height: \(collectionView.bounds.height) - Width: \(collectionView.bounds.width)")
+        collectionView.allowsSelection = true
+    }
+    
+    func setSelectionControlsEnabled (enabled: Bool) {
+        for button in selectionButtons {
+            button.enabled = enabled
+        }
+    }
     
     //MARK: - Datasource delegate methods
     
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        dbg("Calling number of sections")
-//        return 1
-//    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard datasource != nil else {
@@ -58,16 +67,52 @@ class ChallengeDetailViewController: UIViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BaseCell", forIndexPath: indexPath) as! SelectedCell
         
-        let (cellValue,isOriginal) = (datasource?.getCellDisplayValueAndType(indexPath.item))!
+        let cellValue = (datasource?.getCellDisplayValue(indexPath.item))!
+        let isOriginal = (datasource?.isOriginalValue(indexPath.item))!
         
         cell.initialize(indexPath.item, value: cellValue, isOriginal: isOriginal)
         cell.setColors()
         cell.setLabel()
+        if let selectInd = selectedCellIndex where selectInd == indexPath{
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.blueColor().CGColor
+        } else {
+            cell.layer.borderWidth = 0
+            cell.layer.borderColor = UIColor.blackColor().CGColor
+        }
         
         //dbg("Cell value: \(cellValue) - isOrig: \(isOriginal)")
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+        if !datasource!.isOriginalValue(indexPath.item) {
+            var refresh: [NSIndexPath] = [indexPath]
+            if let oldIndexPath = selectedCellIndex {
+                refresh.append(oldIndexPath)
+            }
+            selectedCellIndex = indexPath
+            collectionView.reloadItemsAtIndexPaths(refresh)
+            setSelectionControlsEnabled(true)
+        }
+    }
+
+    //MARK: Selction Controls
+    
+    @IBAction func selectionButtonPressed(sender: AnyObject) {
+        if let index = selectedCellIndex {
+            let button = sender as! UIButton
+            if !(datasource?.isOriginalValue(index.item))! {
+                datasource?.setUserValue(index.item, value: button.tag)
+                collectionView.reloadItemsAtIndexPaths([index])
+            }
+        }
+        
+    }
+    
+    @IBAction func doStuff(sender: AnyObject) {
+        
+    }
     /*
     // MARK: - Navigation
 
