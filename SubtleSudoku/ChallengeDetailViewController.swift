@@ -24,6 +24,7 @@ class ChallengeDetailViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
         setSelectionControlsEnabled(false)
+        loadEasyMode()
         navigationItem.title = datasource!.challengeName
     }
 
@@ -103,7 +104,18 @@ class ChallengeDetailViewController: UIViewController {
 
     //MARK: Selction Controls
     
+    func saveEasyMode() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(easyModeSwitch.on, forKey: "EasyModeSwitchOn")
+    }
+    
+    func loadEasyMode() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        easyModeSwitch.on = defaults.boolForKey("EasyModeSwitchOn")
+}
+    
     @IBAction func easyModeSwitched(sender: AnyObject) {
+        saveEasyMode()
         collectionView.reloadData()
     }
     

@@ -19,6 +19,10 @@ class ChallengeManager {
     private let sampleProbStrH = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
     private let sampleSoluStrH = "417369825632158947958724316825437169791586432346912758289643571573291684164875293"
     
+    private let dummyId = "DUMMY"
+    private let dummyProbStr = "351286497492157638786934512275469183938.21764614873259829645371163792845547318926"
+    private let dummySoluStr = "351286497492157638786934512275469183938521764614873259829645371163792845547318926"
+    
 
     
     var challenges: [SudoChallenge]
@@ -61,6 +65,8 @@ class ChallengeManager {
         challenges.append(sce)
         let sch = SudoChallenge(puzzleId: sampleChallengeIdH, problemString: sampleProbStrH, solutionString: sampleSoluStrH, context: sharedContext)
         challenges.append(sch)
+        let dum = SudoChallenge(puzzleId: dummyId, problemString: dummyProbStr, solutionString: dummySoluStr, context: sharedContext)
+        challenges.append(dum)
         CoreDataStackManager.sharedInstance.saveContext()
     }
     
