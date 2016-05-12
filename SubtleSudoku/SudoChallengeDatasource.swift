@@ -17,32 +17,37 @@ class SudoChallengeDatasource {
         return SU.numberColumns * SU.numberRows
     }
     
-    func gridRefToIndex(gridRef: String) -> Int {
-        if let index = SU.cells.indexOf(gridRef) {
-            return index
-        } else {
-            return -1
-        }
+    var challengeName: String {
+        return challenge.puzzleId
     }
     
-    func indexToGridRef(index: Int) -> String {
-        assert((0..<81).contains(index), "Illegal index \(index)")
-        return SU.cells[index]
-    }
-        
     func getCellDisplayValue(index: Int) -> String {
-        let gridRef = indexToGridRef(index)
+        let gridRef = SudoChallenge.indexToGridRef(index)
         return challenge.screenDisplayValue(gridRef)
     }
     
     func isOriginalValue(index: Int) -> Bool {
-        let gridRef = indexToGridRef(index)
+        let gridRef = SudoChallenge.indexToGridRef(index)
         return challenge.isOriginalCell(gridRef)
     }
     
-    func setUserValue(index: Int, value: Int) {
-        challenge.setUserValue(indexToGridRef(index), value: value)
+    func solutionForCell(index: Int) -> String {
+        return challenge.solutionForCell(index)
     }
+    
+    func isCellCorrect(index: Int) -> Bool {
+        return getCellDisplayValue(index) == solutionForCell(index)
+    }
+    
+    func setUserValue(index: Int, value: Int) {
+        challenge.setUserValue(SudoChallenge.indexToGridRef(index), value: value)
+    }
+    
+    func resetChallenge() {
+        challenge.reset()
+    }
+    
+
 
     init(challenge: SudoChallenge) {
         self.challenge = challenge

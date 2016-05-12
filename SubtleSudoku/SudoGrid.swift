@@ -26,6 +26,19 @@ public class SudoGrid  {
         return gs
     }
     
+    var userEntryString: String {
+        var ps: String = ""
+        for cell in SU.cells {
+            if let sc =  grid[cell] {
+                if !isOriginalCell(sc.gridRef) {
+                    ps += sc.gridStringValue
+                } else {
+                    ps += "."
+                }
+            }
+        }
+        return ps
+    }
     
     private init() {
         for cell in SU.cells {

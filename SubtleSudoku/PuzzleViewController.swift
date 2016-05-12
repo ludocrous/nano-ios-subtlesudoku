@@ -78,6 +78,7 @@ class PuzzleViewController: UIViewController {
             tempGrid.searchSolve()
             if tempGrid.solved {
                 solved = true
+                solution = tempGrid.gridString
                 requiredBacktrack = true
             }
         }

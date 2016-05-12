@@ -11,9 +11,14 @@ import Foundation
 
 class ChallengeManager {
     
-    private let sampleChallengeId = "EASY 0001"
-    private let sampleProbStr = "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3.."
-    private let sampleSoluStr = "483921657967345821251876493548132976729564138136798245372689514814253769695417382"
+    private let sampleChallengeIdE = "EASY 0001"
+    private let sampleProbStrE = "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3.."
+    private let sampleSoluStrE = "483921657967345821251876493548132976729564138136798245372689514814253769695417382"
+
+    private let sampleChallengeIdH = "HARD 0001"
+    private let sampleProbStrH = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
+    private let sampleSoluStrH = "417369825632158947958724316825437169791586432346912758289643571573291684164875293"
+    
 
     
     var challenges: [SudoChallenge]
@@ -30,6 +35,10 @@ class ChallengeManager {
     
     func loadChallenges() {
         challenges = fetchAllChallenges()
+        sortChallenges()
+        for challenge in challenges {
+            challenge.resetState()
+        }
     }
     
     func sortChallenges() {
@@ -48,8 +57,10 @@ class ChallengeManager {
     
     func createSampleData() {
         assert(challenges.count == 0, "Shouldn't be inserting sample data - core data not empty")
-        let sc = SudoChallenge(puzzleId: sampleChallengeId, problemString: sampleProbStr, solutionString: sampleSoluStr, context: sharedContext)
-        challenges.append(sc)
+        let sce = SudoChallenge(puzzleId: sampleChallengeIdE, problemString: sampleProbStrE, solutionString: sampleSoluStrE, context: sharedContext)
+        challenges.append(sce)
+        let sch = SudoChallenge(puzzleId: sampleChallengeIdH, problemString: sampleProbStrH, solutionString: sampleSoluStrH, context: sharedContext)
+        challenges.append(sch)
         CoreDataStackManager.sharedInstance.saveContext()
     }
     

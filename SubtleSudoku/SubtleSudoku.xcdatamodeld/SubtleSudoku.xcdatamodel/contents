@@ -5,8 +5,9 @@
         <attribute name="problemString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="puzzleId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="solutionString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userEntryString" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SudoChallenge" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="SudoChallenge" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

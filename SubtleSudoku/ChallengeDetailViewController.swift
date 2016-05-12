@@ -15,6 +15,7 @@ class ChallengeDetailViewController: UIViewController {
     @IBOutlet weak var selectionView: UIView!
     @IBOutlet weak var optionsView: UIView!
     @IBOutlet var selectionButtons: [UIButton]!
+    @IBOutlet weak var easyModeSwitch: UISwitch!
     
     var datasource : SudoChallengeDatasource?
     var selectedCellIndex: NSIndexPath?
@@ -23,6 +24,7 @@ class ChallengeDetailViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
         setSelectionControlsEnabled(false)
+        navigationItem.title = datasource!.challengeName
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,8 +71,10 @@ class ChallengeDetailViewController: UIViewController {
         
         let cellValue = (datasource?.getCellDisplayValue(indexPath.item))!
         let isOriginal = (datasource?.isOriginalValue(indexPath.item))!
-        
+        let isCorrect = (datasource?.isCellCorrect(indexPath.item))!
         cell.initialize(indexPath.item, value: cellValue, isOriginal: isOriginal)
+        cell.displayCorrectStatus = easyModeSwitch.on
+        cell.isCorrect = isCorrect
         cell.setColors()
         cell.setLabel()
         if let selectInd = selectedCellIndex where selectInd == indexPath{
@@ -99,6 +103,10 @@ class ChallengeDetailViewController: UIViewController {
 
     //MARK: Selction Controls
     
+    @IBAction func easyModeSwitched(sender: AnyObject) {
+        collectionView.reloadData()
+    }
+    
     @IBAction func selectionButtonPressed(sender: AnyObject) {
         if let index = selectedCellIndex {
             let button = sender as! UIButton
@@ -110,8 +118,9 @@ class ChallengeDetailViewController: UIViewController {
         
     }
     
-    @IBAction func doStuff(sender: AnyObject) {
-        
+    @IBAction func resetChallenge(sender: AnyObject) {
+        datasource!.resetChallenge()
+        collectionView.reloadData()
     }
     /*
     // MARK: - Navigation

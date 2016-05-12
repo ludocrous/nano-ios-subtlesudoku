@@ -35,6 +35,16 @@ struct SudoUtils {
         }
         return result
     }
+    
+    static func validCount(gridString: String) -> Int {
+        var count = 0
+        for char in gridString.characters {
+            if digitsArray.contains(char) {
+                count += 1
+            }
+        }
+        return count
+    }
 
     static func buildRelationships() {
         cells = createRefs(rows: Array(rows.characters), cols: Array(cols.characters))

@@ -17,6 +17,9 @@ class GridCell: UICollectionViewCell {
     var currentValue: String = ""
     var index: Int = -1
     var isOriginalValue: Bool = false
+    var isCorrect: Bool = false
+    var displayCorrectStatus = false
+    
     var indexOfCell: Int {
         get {
             return index

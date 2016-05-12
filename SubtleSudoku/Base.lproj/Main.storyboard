@@ -18,61 +18,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3w-LX-47r">
-                                <rect key="frame" x="259" y="273" width="82" height="30"/>
-                                <state key="normal" title="List Puzzles"/>
-                                <connections>
-                                    <segue destination="E0u-Ud-4Nb" kind="show" id="UhO-7f-dy2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pld-vn-vJz">
-                                <rect key="frame" x="219" y="346" width="161" height="30"/>
-                                <state key="normal" title="List Current Challenges"/>
-                                <connections>
-                                    <segue destination="I08-5E-46w" kind="show" id="Htj-ph-pa9"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Subtle Sudoku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qE7-fY-FUf">
-                                <rect key="frame" x="244" y="0.0" width="112" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKK-Cc-nSk">
-                                <rect key="frame" x="250" y="202" width="100" height="30"/>
-                                <state key="normal" title="Test a solution"/>
-                                <connections>
-                                    <action selector="solveAPuzzle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="49J-ra-ish"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgS-Wh-XWg">
-                                <rect key="frame" x="229" y="420" width="142" height="30"/>
-                                <state key="normal" title="Load Challenge Data"/>
-                                <connections>
-                                    <action selector="loadTempChallengeData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xKe-ni-tsa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iW-eP-T3d">
-                                <rect key="frame" x="246" y="143" width="109" height="30"/>
-                                <state key="normal" title="Work a problem"/>
-                                <connections>
-                                    <action selector="workAPuzzle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ygG-07-l8g"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="8mV-q2-aIt">
+                                <rect key="frame" x="220" y="148" width="161" height="305"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Subtle Sudoku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qE7-fY-FUf">
+                                        <rect key="frame" x="25" y="0.0" width="112" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iW-eP-T3d">
+                                        <rect key="frame" x="26" y="55" width="109" height="30"/>
+                                        <state key="normal" title="Work a problem"/>
+                                        <connections>
+                                            <action selector="workAPuzzle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ygG-07-l8g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKK-Cc-nSk">
+                                        <rect key="frame" x="31" y="110" width="100" height="30"/>
+                                        <state key="normal" title="Test a solution"/>
+                                        <connections>
+                                            <action selector="solveAPuzzle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="49J-ra-ish"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3w-LX-47r">
+                                        <rect key="frame" x="40" y="165" width="82" height="30"/>
+                                        <state key="normal" title="List Puzzles"/>
+                                        <connections>
+                                            <segue destination="E0u-Ud-4Nb" kind="show" id="UhO-7f-dy2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pld-vn-vJz">
+                                        <rect key="frame" x="0.0" y="220" width="161" height="30"/>
+                                        <state key="normal" title="List Current Challenges"/>
+                                        <connections>
+                                            <segue destination="I08-5E-46w" kind="show" id="Htj-ph-pa9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgS-Wh-XWg">
+                                        <rect key="frame" x="10" y="275" width="142" height="30"/>
+                                        <state key="normal" title="Load Challenge Data"/>
+                                        <connections>
+                                            <action selector="loadTempChallengeData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xKe-ni-tsa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EKK-Cc-nSk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="182" id="3fo-NQ-tpp"/>
-                            <constraint firstItem="xgS-Wh-XWg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bW-7I-Fhl"/>
-                            <constraint firstItem="Pld-vn-vJz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ByC-t1-0CJ"/>
-                            <constraint firstItem="Pld-vn-vJz" firstAttribute="top" secondItem="o3w-LX-47r" secondAttribute="bottom" constant="43" id="FRS-8M-OET"/>
-                            <constraint firstItem="o3w-LX-47r" firstAttribute="top" secondItem="EKK-Cc-nSk" secondAttribute="bottom" constant="41" id="a4y-Am-m4J"/>
-                            <constraint firstItem="xgS-Wh-XWg" firstAttribute="top" secondItem="Pld-vn-vJz" secondAttribute="bottom" constant="44" id="cDl-Jp-SHz"/>
-                            <constraint firstItem="EKK-Cc-nSk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gsV-2c-KqR"/>
-                            <constraint firstItem="EKK-Cc-nSk" firstAttribute="top" secondItem="2iW-eP-T3d" secondAttribute="bottom" constant="29" id="lWM-tN-NES"/>
-                            <constraint firstItem="qE7-fY-FUf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oLg-RQ-BHz"/>
-                            <constraint firstItem="o3w-LX-47r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qr8-F3-TMX"/>
-                            <constraint firstItem="2iW-eP-T3d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="szn-bI-dPr"/>
+                            <constraint firstItem="8mV-q2-aIt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jFh-Mg-lkA"/>
+                            <constraint firstItem="8mV-q2-aIt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vBr-RV-EUh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -106,12 +102,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="py5-q5-JEs">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="ibF-zD-eQd" detailTextLabel="VRt-yI-Zpe" style="IBUITableViewCellStyleSubtitle" id="py5-q5-JEs">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="py5-q5-JEs" id="FTP-DH-SYG">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ibF-zD-eQd">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VRt-yI-Zpe">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="n3c-sj-Vd7" kind="show" identifier="ShowChallenge" id="Jgg-Ns-MSV"/>
@@ -495,18 +507,29 @@
                                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSN-a6-CoQ" userLabel="Options View">
                                                         <rect key="frame" x="0.0" y="50" width="600" height="436"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opJ-ec-c35">
-                                                                <rect key="frame" x="264" y="49" width="57" height="30"/>
-                                                                <state key="normal" title="Do Stuff"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-YH-yR9">
+                                                                <rect key="frame" x="269" y="135" width="46" height="30"/>
+                                                                <state key="normal" title="Reset"/>
                                                                 <connections>
-                                                                    <action selector="doStuff:" destination="n3c-sj-Vd7" eventType="touchUpInside" id="VNV-VL-WOX"/>
+                                                                    <action selector="resetChallenge:" destination="n3c-sj-Vd7" eventType="touchUpInside" id="z1b-GF-pBc"/>
                                                                 </connections>
                                                             </button>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L25-xI-23S">
+                                                                <rect key="frame" x="20" y="8" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="easyModeSwitched:" destination="n3c-sj-Vd7" eventType="valueChanged" id="SUa-Xe-4f8"/>
+                                                                </connections>
+                                                            </switch>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Easy Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvG-ER-hO6">
+                                                                <rect key="frame" x="77" y="13" width="92" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstItem="opJ-ec-c35" firstAttribute="centerY" secondItem="SSN-a6-CoQ" secondAttribute="centerY" id="Ya1-br-ru6"/>
-                                                            <constraint firstItem="opJ-ec-c35" firstAttribute="centerX" secondItem="SSN-a6-CoQ" secondAttribute="centerX" id="tDf-rT-fbh"/>
+                                                            <constraint firstItem="gEG-YH-yR9" firstAttribute="centerX" secondItem="SSN-a6-CoQ" secondAttribute="centerX" id="nbP-Dk-2cJ"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -535,6 +558,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Wqe-ye-ejn" id="Uew-aw-uF7"/>
                         <outlet property="controlsView" destination="EqE-bn-Xf9" id="RcD-HJ-rUO"/>
+                        <outlet property="easyModeSwitch" destination="L25-xI-23S" id="M3F-8V-dLW"/>
                         <outlet property="optionsView" destination="SSN-a6-CoQ" id="Wee-zU-tdf"/>
                         <outlet property="selectionView" destination="3tD-Qa-FnP" id="61N-Yd-maH"/>
                         <outletCollection property="selectionButtons" destination="oZX-z7-vsF" collectionClass="NSMutableArray" id="IVW-Wp-mJY"/>

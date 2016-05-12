@@ -15,7 +15,7 @@ let soluStr1 = "4839216579673458212518764935481329767295641381367982453726895148
 let probStr2 = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
 let soluStr2 = "417369825632158947958724316825437169791586432346912758289643571573291684164875293"
 
-let testSolve = "2...8.3...6..7..84.3.5..2.9...1.54.8.........4.27.6...3.1..7.4.72..4..6...4.1...3"
+let testSolve = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......"
 
 
 class MainViewController: UIViewController {
@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
         
         myGrid.setValue("A2", entry: 5)
         dbg("GS After: \(myGrid.gridString)")
+        dbg("PS : \(myGrid.userEntryString)")
     }
     
     @IBAction func solveAPuzzle(sender: AnyObject) {
@@ -67,12 +68,12 @@ class MainViewController: UIViewController {
        } else {
             dbg("Grid is NOT solved - [\(myGrid.gridString)]")
         }
-//        myGrid.searchSolve()
-//        if myGrid.solved {
-//            dbg("Grid is solved - [\(myGrid.gridString)]")
-//        } else {
-//            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
-//        }
+        myGrid.searchSolve()
+        if myGrid.solved {
+            dbg("Grid is solved - [\(myGrid.gridString)]")
+        } else {
+            dbg("Grid is NOT solved - [\(myGrid.gridString)]")
+        }
     }
     
 

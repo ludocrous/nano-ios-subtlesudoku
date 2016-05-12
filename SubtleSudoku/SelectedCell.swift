@@ -17,7 +17,11 @@ class SelectedCell : GridCell {
         if isOriginalValue {
             valueLabel.textColor = UIColor.blackColor()
         } else {
-            valueLabel.textColor = UIColor.greenColor()
+            if displayCorrectStatus && !isCorrect {
+                valueLabel.textColor = UIColor.redColor()
+            } else {
+                valueLabel.textColor = UIColor.blueColor()
+            }
         }
     }
     

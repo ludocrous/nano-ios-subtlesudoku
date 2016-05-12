@@ -56,7 +56,11 @@ class ChallengeTableViewController: UITableViewController {
         cell.textLabel?.text = "\(item.puzzleId)"
         
         if let myDetailTextLabel = cell.detailTextLabel {
-            myDetailTextLabel.text = item.problemString
+            if item.isSolved {
+                myDetailTextLabel.text = "Progress : COMPLETED"
+            } else {
+                myDetailTextLabel.text = "Progress : \(item.progressPercentage)%"
+            }
         }
         
         return cell
