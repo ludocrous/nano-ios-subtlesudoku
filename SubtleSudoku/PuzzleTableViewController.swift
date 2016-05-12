@@ -22,6 +22,7 @@ class PuzzleTableViewController: UITableViewController{
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        navigationItem.title = "Puzzles"
         loadPuzzleList()
         
     }
@@ -100,6 +101,7 @@ class PuzzleTableViewController: UITableViewController{
             cell.textLabel?.textColor = UIColor.redColor()
         } else {
             cell.textLabel?.text = "\(item.puzzleId!)"
+            cell.textLabel?.textColor = UIColor.blackColor()
         }
             
             if let myDetailTextLabel = cell.detailTextLabel {

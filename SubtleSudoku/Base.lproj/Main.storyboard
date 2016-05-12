@@ -115,6 +115,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="2Zk-xq-qfv">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Aci-a6-Ejs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bSP-mK-LZK">
+                            <connections>
+                                <action selector="loadNewChallenge:" destination="2MN-67-bab" id="qIt-9d-SuS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Lbg-a6-Ug2" id="hBU-VL-n7p"/>

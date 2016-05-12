@@ -16,10 +16,21 @@ class ChallengeTableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        navigationItem.rightBarButtonItem = editButtonItem()
+        navigationItem.leftBarButtonItem = editButtonItem()
+        navigationItem.title = "Challenges"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
     }
     
     
+    @IBAction func loadNewChallenge(sender: AnyObject) {
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("PuzzleTableViewController") as! PuzzleTableViewController
+        //controller.datasource = SudoChallengeDatasource(challenge: challenges[indexPath.item])
+        self.navigationController!.pushViewController(controller, animated: true)
+        
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

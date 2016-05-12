@@ -15,18 +15,11 @@ class PuzzleViewController: UIViewController {
     @IBOutlet weak var difficultyLabel: UILabel!
     @IBOutlet weak var unsolvedLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
-    
-    @IBAction func acceptChallenge(sender: AnyObject) {
-        if let puzzle = puzzle {
-            ChallengeManager.sharedInstance.createNewChallenge(puzzle.puzzleId!, problemString: puzzle.problemString!, solutionString: puzzle.solutionString!)
-        }
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+
     var puzzleIndex: Int?
     private var puzzle: DyDBPuzzle?
+    private var solution: String = ""
     private var puzzleArray: [Character] = [Character]()
     
     override func viewDidLoad() {
@@ -34,6 +27,18 @@ class PuzzleViewController: UIViewController {
         loadData()
         prepareViewLayouts()
         setControls()
+    }
+    
+    @IBAction func acceptChallenge(sender: AnyObject) {
+        if let puzzle = puzzle {
+            if solution.characters.count == 81 {
+                ChallengeManager.sharedInstance.createNewChallenge(puzzle.puzzleId!, problemString: puzzle.problemString!, solutionString: solution)
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            } else {
+                displayAlert("Error", message: "Cannot determine a solution to this puzzle", onViewController: self)
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
     }
     
     func prepareViewLayouts() {
@@ -60,6 +65,21 @@ class PuzzleViewController: UIViewController {
         }
         puzzle = DyDBManager.sharedInstance.puzzles[index]
         puzzleArray = puzzle!.puzzleArray
+        
+        let tempGrid = SudoGrid(gridString: puzzle!.problemString!)
+        tempGrid.solve()
+        if tempGrid.solved {
+            descriptionLabel.text = "PROCESS OF ELIMINATION"
+            solution = tempGrid.gridString
+        } else {
+            tempGrid.searchSolve()
+            if tempGrid.solved {
+                descriptionLabel.text = "TRAIL AND ERROR"
+                solution = tempGrid.gridString
+            } else {
+                descriptionLabel.text = "UNSOLVABLE"
+            }
+        }
     }
     
     func setControls() {

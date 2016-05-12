@@ -40,6 +40,7 @@ class DyDBManager {
                     for item in paginatedOutput.items as! [DyDBPuzzle]{
                         self.puzzles.append(item)
                     }
+                    self.puzzles.sortInPlace({$0.puzzleId < $1.puzzleId})
                     completionHandler(success: true, errorString: nil)
                 } else {
                     err("AWS DB query is returning a nil result")
@@ -66,6 +67,7 @@ class DyDBManager {
             return nil
         })
     }
+    
     
 }
 

@@ -32,6 +32,10 @@ class ChallengeManager {
         challenges = fetchAllChallenges()
     }
     
+    func sortChallenges() {
+        challenges.sortInPlace({$0.puzzleId < $1.puzzleId})
+    }
+    
     private func fetchAllChallenges() -> [SudoChallenge] {
         let fetchRequest = NSFetchRequest(entityName: "SudoChallenge")
         do {
@@ -52,6 +56,7 @@ class ChallengeManager {
     func createNewChallenge(puzzleId: String, problemString: String, solutionString: String) -> SudoChallenge {
         let newChallenge = SudoChallenge(puzzleId: puzzleId, problemString: problemString, solutionString: solutionString, context: sharedContext)
         challenges.append(newChallenge)
+        sortChallenges()
         CoreDataStackManager.sharedInstance.saveContext()
         return newChallenge
     }
