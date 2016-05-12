@@ -9,6 +9,8 @@
 import Foundation
 import AWSDynamoDB
 
+// A representation of the AWS DynamoDB record.
+
 class DyDBPuzzle :AWSDynamoDBObjectModel,AWSDynamoDBModeling  {
     var puzzleId: String?
     var problemString: String?

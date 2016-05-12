@@ -21,4 +21,3 @@ struct AWSConstants {
     static let TimeoutInterval: NSTimeInterval = 20
     static let PageLimit = 100
 }
-//let AWSSampleDynamoDBTableName = "DynamoDB-OM-SwiftSample"

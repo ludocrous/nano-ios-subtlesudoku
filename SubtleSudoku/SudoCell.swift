@@ -11,6 +11,8 @@ import Foundation
 typealias SudoBits = UInt16
 let SudoAllValues : SudoBits = 0b111111111
 
+// The cell is the lowest element within a Sudoku grid. It uses bitwise manipulation to store potential values.
+
 public struct SudoCell: CustomStringConvertible {
     
     var pValues: SudoBits = SudoAllValues
@@ -25,6 +27,7 @@ public struct SudoCell: CustomStringConvertible {
         return outStr
     }
     
+    // Return a value if single possible value for this cell.
     public var gridStringValue: String {
         let possVals = possibleValues
         if possVals.count == 1 {
@@ -37,10 +40,13 @@ public struct SudoCell: CustomStringConvertible {
         }
     }
     
+    //HOw many possible values are there ?
     public var possiblesCount : Int {
         return countBitsSet(pValues)
     }
     
+    
+    //What are the possible values
     public var possibleValues: [Int] {
         var result = [Int]()
         for i in 1...9 {
@@ -51,6 +57,7 @@ public struct SudoCell: CustomStringConvertible {
         return result
     }
     
+    //Does it have a single value
     func asSingleValueString (invalidString: String = "") -> String {
         if possiblesCount == 1 {
             return String(possibleValues[0])
@@ -58,6 +65,8 @@ public struct SudoCell: CustomStringConvertible {
             return invalidString
         }
     }
+    
+    //MARK: Bitwise functions to store possible values for a cell.
     
     func bitsAsString (bits : SudoBits ) -> String {
         let bitStr = String(bits, radix:2)

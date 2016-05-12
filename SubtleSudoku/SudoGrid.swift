@@ -12,10 +12,13 @@ import Foundation
 
 public class SudoGrid  {
     
+    //This class constitutes the 9 X 9 sized 81 element grid synonomous with Sudoku
+    
     var grid: [String:SudoCell] = [:]
     var problemValues: [String : Int] = [:]
     
     
+    //Extract the current state of teh grid using digits for solved values and . for those with numerous possible values
     public var gridString: String {
         var gs: String = ""
         for cell in SU.cells {
@@ -26,6 +29,7 @@ public class SudoGrid  {
         return gs
     }
     
+    // Which values has the user entered ie not part of the original puzzle
     var userEntryString: String {
         var ps: String = ""
         for cell in SU.cells {
@@ -156,7 +160,7 @@ public class SudoGrid  {
     
     public func solve() -> Bool {
         for (ref,value) in problemValues {
-            dbg ("Solving for \(ref) with \(value)")
+//            dbg ("Solving for \(ref) with \(value)")
             if assign(ref, entry: value) == false {return false}
         }
         return true
@@ -174,7 +178,7 @@ public class SudoGrid  {
                 minRef = ref
             }
         }
-        dbg ("Lowest tree count is \(minOptions) for \(minRef)")
+//        dbg ("Lowest tree count is \(minOptions) for \(minRef)")
         let poss = grid[minRef]!.possibleValues
         for possValue in poss {
             let gridCopy = grid
@@ -185,7 +189,7 @@ public class SudoGrid  {
                 grid = gridCopy
             }
         }
-        dbg ("Returning \(solved)")
+//        dbg ("Returning \(solved)")
         return solved
         
     }

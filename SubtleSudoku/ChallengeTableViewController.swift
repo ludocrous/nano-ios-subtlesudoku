@@ -12,9 +12,6 @@ import CoreData
 class ChallengeTableViewController: UITableViewController {
     
     
-//    var challenges = [SudoChallenge]()
-    
-    
     override func viewDidLoad() {
         navigationItem.leftBarButtonItem = editButtonItem()
         navigationItem.title = "Challenges"
@@ -42,10 +39,6 @@ class ChallengeTableViewController: UITableViewController {
         return ChallengeManager.sharedInstance.challenges.count
     }
     
-//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return false
-//    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -85,13 +78,6 @@ class ChallengeTableViewController: UITableViewController {
         }
     }
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//
-//        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ChallengeDetail") as! ChallengeDetailViewController
-//        controller.datasource = SudoChallengeDatasource(challenge: challenges[indexPath.item])
-//        self.navigationController!.pushViewController(controller, animated: true)
-//
-//    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -104,10 +90,4 @@ class ChallengeTableViewController: UITableViewController {
         
     }
     
-//    lazy var fetchedResultsController: NSFetchedResultsController = {
-//        let fetchRequest = NSFetchRequest (entityName: "SudoChallenge")
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "puzzleId", ascending: true)]
-//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
-//        return fetchedResultsController
-//    }()
 }

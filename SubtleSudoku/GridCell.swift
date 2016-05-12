@@ -12,6 +12,8 @@ let firstBackgroundColor = UIColor.whiteColor()
 let secondBackgroundColor = UIColor.lightGrayColor()
 
 
+// A base class that is used by collection views in both the preview and challenge modes.
+
 class GridCell: UICollectionViewCell {
     
     var currentValue: String = ""

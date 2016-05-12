@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+//The challenge forms the MSManaged Core Data class that holds the state of the problem and user progress
+
 class SudoChallenge : NSManagedObject {
     
     @NSManaged var puzzleId: String
@@ -17,6 +19,7 @@ class SudoChallenge : NSManagedObject {
     @NSManaged var dateStarted: NSDate
     @NSManaged var userEntryString: String
     
+    //Use the grid represention
     lazy private var grid: SudoGrid = SudoGrid(gridString: self.problemString)
     
     
@@ -77,7 +80,6 @@ class SudoChallenge : NSManagedObject {
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
-        dbg("SudoChallenge - Lower level init called")
     }
 
     convenience init(puzzleId: String, problemString: String, solutionString: String, context: NSManagedObjectContext) {
@@ -90,12 +92,10 @@ class SudoChallenge : NSManagedObject {
         self.dateStarted = NSDate()
         grid = SudoGrid(gridString: problemString)
         self.userEntryString = grid.userEntryString
-        dbg("SudoChallenge instance created")
     }
     
     override func prepareForDeletion() {
         super.prepareForDeletion()
-        dbg("Prepare for deletion being called")
     }
     
     func setUserValue(gridRef: String, value: Int) {
@@ -115,7 +115,7 @@ class SudoChallenge : NSManagedObject {
                 }
             }
         } else {
-            err("Progress string should be 81")
+            err("Progress string should be 81 characters long")
         }
     }
     

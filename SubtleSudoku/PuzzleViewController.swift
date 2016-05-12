@@ -130,12 +130,9 @@ class PuzzleViewController: UIViewController {
             
             if SU.digitsArray.contains(character) {
                 cell.initialize(indexPath.item, value: String(character))
-//                cell.previewLabel.text = String(character)
             } else {
                 cell.initialize(indexPath.item, value: "")
-//                cell.previewLabel.text = ""
             }
-            //cell.initialize(indexPath.item, value: cellValue, isOriginal: isOriginal)
             cell.setColors()
             cell.setLabel()
         }

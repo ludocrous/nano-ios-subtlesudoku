@@ -16,6 +16,7 @@ class ChallengeDetailViewController: UIViewController {
     @IBOutlet weak var optionsView: UIView!
     @IBOutlet var selectionButtons: [UIButton]!
     @IBOutlet weak var easyModeSwitch: UISwitch!
+    @IBOutlet weak var progressLabel: UILabel!
     
     var datasource : SudoChallengeDatasource?
     var selectedCellIndex: NSIndexPath?

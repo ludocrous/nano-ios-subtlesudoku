@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Utility class to assist with layout and contructs of Sudoku puzzles
+
 typealias SU = SudoUtils
 
 struct SudoUtils {
@@ -45,7 +47,9 @@ struct SudoUtils {
         }
         return count
     }
-
+    // This function lays put the relationships between the various cells. 
+    // This is what is used to determine what other cells are influenced when placing a value.
+    
     static func buildRelationships() {
         cells = createRefs(rows: Array(rows.characters), cols: Array(cols.characters))
         

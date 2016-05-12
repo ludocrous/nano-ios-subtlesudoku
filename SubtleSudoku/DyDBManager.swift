@@ -26,6 +26,7 @@ class DyDBManager {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
+        // This function clears the puzzles array and reloads the data from AWS.
         
         puzzles.removeAll()
         
